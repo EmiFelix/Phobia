@@ -8,7 +8,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private LayerMask pickupLayer;
     [SerializeField] private LayerMask door;
     [SerializeField] private LayerMask lightBox;
-
+    [SerializeField] private LayerMask lightPanel;
     [SerializeField] private int minRequiredToInteract;
 
     private Camera cam;
@@ -19,12 +19,19 @@ public class PlayerInteract : MonoBehaviour
 
     public EquipmentManager equipManager;
 
-    
+    [SerializeField] private GameObject luz1;
+    [SerializeField] private GameObject luz2;
+    [SerializeField] private GameObject luz3;
+    [SerializeField] private GameObject lever;
+    private bool puzzle1Solved;
+
+
 
     private void Start()
     {
         GetReferences();
         minRequiredToInteract = 6;
+        puzzle1Solved = false;
 
     }
 
@@ -61,8 +68,8 @@ public class PlayerInteract : MonoBehaviour
             {
                 inventory.AddItem(newItem);
             }
-            
-            
+
+
             Destroy(hit.transform.gameObject);
 
 
@@ -75,8 +82,18 @@ public class PlayerInteract : MonoBehaviour
 
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, lightBox) && equipManager.currentWeapon.weaponType == WeaponType.Fuse && equipManager.currentWeapon.magazineSize == minRequiredToInteract)
         {
-            // TODO: DARLE TODOS LOS FUSIBLES A LA CAJA
             equipManager.DestroyWeapon();
+            luz1.SetActive(true);
+            luz2.SetActive(true);
+            luz3.SetActive(true);
+            
+
+            puzzle1Solved = true;
+        }
+
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, lightPanel) && puzzle1Solved == true)
+        {
+            hit.collider.gameObject.GetComponent<LightRoomManager>().LightsInteract();
         }
 
     }
