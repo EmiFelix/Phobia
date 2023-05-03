@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] private Transform Player, enemigo;
+    [SerializeField] private Transform player, enemigo;
 
     [SerializeField] private float velocidad;
 
@@ -14,11 +14,16 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
-        playerPos = new Vector3(Player.position.x, enemigo.position.y, Player.position.z);
+        FollowPlayer();
+    }
+
+    private void FollowPlayer()
+    {
+        playerPos = new Vector3(player.position.x, enemigo.position.y, player.position.z);
         if (seguimiento == true)
         {
             enemigo.transform.position = Vector3.MoveTowards(transform.position, playerPos, velocidad * Time.deltaTime);
-            enemigo.transform.LookAt(Player);
+            enemigo.transform.LookAt(player);
         }
     }
 }

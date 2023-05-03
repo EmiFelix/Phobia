@@ -14,8 +14,11 @@ public class Linterna : MonoBehaviour
 
     [SerializeField] private GameObject enemy;
 
+    [SerializeField] private playerMove playerMove;
+
     private void Start()
     {
+        playerMove = FindObjectOfType<playerMove>();
         playerHUD = FindObjectOfType<PlayerHUD>();
         cam = Camera.main;
     }
@@ -51,7 +54,9 @@ public class Linterna : MonoBehaviour
 
                 if (hit.collider.tag == "Enemy")
                 {
+                    playerMove.enemySpawned = false;
                     Destroy(hit.transform.gameObject);
+
                 }
             }
         }
