@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: cajagrande
+  m_Name: frascoschicos
   m_Shader: {fileID: 47, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _METALLICGLOSSMAP
@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: cbdf1c0c2b6f37847886e05ea561ae63, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5b7fa880332d38944bc75808222076b7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -45,11 +45,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8d7d4913eab566c429582f6b408ecacd, type: 3}
+        m_Texture: {fileID: 2800000, guid: fdccdf5d151cdce47a37842b3f68d347, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 5f6ef0ac0e95f5b4aa697632fe0f3063, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2d1d543c17a86634c9c29e0a658cdaed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -57,11 +57,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 139994f33233ab3459af3fd1a748167d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9e007a9cab3c6df4cb3eeb0847f48139, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: 50b50ac96eb3d1541b28d99d1db592ec, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3882967e8984b014e97d582cd56b978a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
