@@ -14,11 +14,11 @@ public class Linterna : MonoBehaviour
 
     [SerializeField] private GameObject enemy;
 
-    [SerializeField] private playerMove playerMove;
+    [SerializeField] private PlayerStats playerStats;
 
     private void Start()
     {
-        playerMove = FindObjectOfType<playerMove>();
+        playerStats = FindObjectOfType<PlayerStats>();
         playerHUD = FindObjectOfType<PlayerHUD>();
         cam = Camera.main;
     }
@@ -52,10 +52,11 @@ public class Linterna : MonoBehaviour
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, rango))
             {
 
-                if (hit.collider.tag == "Enemy")
+                if (hit.collider.tag == "Enemy" || hit.collider.tag == "GhostHitBox")
                 {
-                    playerMove.enemySpawned = false;
+                    playerStats.enemySpawned = false;
                     Destroy(hit.transform.gameObject);
+                    playerStats.StopPoison();
 
                 }
             }
