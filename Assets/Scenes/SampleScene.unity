@@ -94758,7 +94758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2172398419416382720, guid: 497a951106ff73143ba21e2c797692a0, type: 3}
       propertyPath: speed
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2172398419416382720, guid: 497a951106ff73143ba21e2c797692a0, type: 3}
       propertyPath: ghostSpawn
