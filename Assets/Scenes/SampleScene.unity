@@ -10942,6 +10942,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -361.271
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b255f8034ce29b4409f34e26f71056e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2dd0db037253c634f88ed4bddfdf5c94, type: 2}
     - target: {fileID: 919132149155446097, guid: b255f8034ce29b4409f34e26f71056e1, type: 3}
       propertyPath: m_Name
       value: TVTable
@@ -28799,6 +28803,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -359.972
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b255f8034ce29b4409f34e26f71056e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2dd0db037253c634f88ed4bddfdf5c94, type: 2}
     - target: {fileID: 919132149155446097, guid: b255f8034ce29b4409f34e26f71056e1, type: 3}
       propertyPath: m_Name
       value: TVTable (1)
@@ -59887,7 +59895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385080719}
   m_LocalRotation: {x: 0, y: -0.9507353, z: -0, w: -0.31000397}
-  m_LocalPosition: {x: -0.026762076, y: -0.100508094, z: -0.22627288}
+  m_LocalPosition: {x: 0.26, y: 0.24, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
