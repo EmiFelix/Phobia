@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class EnemyScript : MonoBehaviour
 {
     public NavMeshAgent agent;
@@ -21,12 +22,28 @@ public class EnemyScript : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public Animator _Anim;
+
+    string _xAxisName = "X Axis";
+    string _zAxisName = "Z Axis";
+
+    float _xAxis, _zAxis;
+
+    Vector3 actualObj;
+    bool isMoving;
+
     public void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
 
 
+    }
+
+    void AnimatorManager(float xAxis, float zAxis)
+    {
+        _Anim.SetFloat(_xAxisName, xAxis);
+        _Anim.SetFloat(_zAxisName, zAxis);
     }
 
     public void Update()
@@ -37,6 +54,22 @@ public class EnemyScript : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
+        Vector3 dir = transform.forward * actualObj.z + transform.right * actualObj.x;
+        
+
+        if (isMoving)
+        {
+            _xAxis = dir.x;
+            _zAxis = dir.z;
+        }
+        else
+        {
+            _xAxis = 0;
+            _zAxis = 0;
+        }
+        
+        AnimatorManager(_xAxis, _zAxis);
     }
 
     private void Patroling()
@@ -47,6 +80,7 @@ public class EnemyScript : MonoBehaviour
         if (WalkPointSet)
         {
             agent.SetDestination(walkPoint);
+            actualObj = walkPoint;
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -74,16 +108,24 @@ public class EnemyScript : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        actualObj = player.position;
+
+
 
     }
     private void AttackPlayer()
     {
         agent.SetDestination(transform.position);
+        actualObj = player.position;
+        isMoving = false;
 
-        transform.LookAt(player);
+        Vector3 lookAt = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.LookAt(lookAt);
 
         if (!alreadyAttacked)
         {
+            agent.isStopped = true;
+
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
@@ -91,6 +133,8 @@ public class EnemyScript : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+        isMoving = true;
+        agent.isStopped = false;
     }
 }
 
