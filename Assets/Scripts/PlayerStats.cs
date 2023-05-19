@@ -28,15 +28,18 @@ public class PlayerStats : CharacterStats
         InitVariables();
 
         //Enemy Spawns
-        ghostPositions.Add(ghostSpawn.position = new Vector3(11, 12, 35));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(14, 13, 41));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(3, 11, 44));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(-1, 11, 59));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(10, 12, 64));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(11, 11.5f, 35));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(14, 11.5f, 40));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(3, 11.5f, 44));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(-1, 11.5f, 59));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(10, 11.5f, 64));
 
         //Trigger Spawns
-        triggerPositions.Add(triggerSpawn.position = new Vector3(16.5f, 12.5f, 35f));
-        triggerPositions.Add(triggerSpawn.position = new Vector3(11, 12.5f, 41));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(16.5f, 11.5f, 35f));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(11, 11.5f, 41));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(2, 11.5f, 34));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(-4, 11.5f, 55));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(9.5f, 11.5f, 63));
 
     }
 
@@ -56,30 +59,82 @@ public class PlayerStats : CharacterStats
     {
 
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Trigger"))
         {
 
             //Player Collide with the trigger
             Debug.Log("Pasando por el trigger");
 
-            if (counter < triggerPositions.Count)
+            triggerPositions.ForEach(position =>
             {
                 //Spawn Enemy
                 Instantiate(ghost, ghostPositions[counter], Quaternion.identity);
                 enemySpawned = true;
 
                 //Destroy Collider
-                Destroy(GetComponent<Collider>());
+                //triggerPositions.Remove(position);
 
                 //Spawn next trigger
-                Instantiate(triggerPrefab, triggerPositions[counter], Quaternion.identity);
+                Instantiate(triggerPrefab, position, Quaternion.identity);
 
-                counter++;
-            }
+                counter = counter + 1;
+
+                Debug.Log("Pasaste por el Vector3 n: " + counter);
+                //if (counter < triggerPositions.Count)
+                //{
+                //    //Spawn Enemy
+                //    Instantiate(ghost, ghostPositions[counter], Quaternion.identity);
+                //    enemySpawned = true;
+
+                //    //Destroy Collider
+                //    //triggerPositions.Remove(position);
+
+                //    //Spawn next trigger
+                //    Instantiate(triggerPrefab, position, Quaternion.identity);
+
+                //    counter = counter + 1;
+
+                //    Debug.Log("Pasaste por el Vector3 n: " + counter);
+                //}
+            });
+            //for(int i = 0; i < triggerPositions.Count; i++)
+            //{
+            //    //Spawn Enemy
+            //    Instantiate(ghost, ghostPositions[i], Quaternion.identity);
+            //    enemySpawned = true;
+
+            //    //Destroy Collider
+            //    triggerPositions.RemoveAt(i);
+
+            //    //Spawn next trigger
+            //    Instantiate(triggerPrefab, triggerPositions[i], Quaternion.identity);
+
+            //    i++;
+
+            //    Debug.Log("Pasaste por el Vector3 n: " + i);
+            //}
+                //if (counter < triggerPositions.Count)
+                //{
+                //    //Spawn Enemy
+                //    Instantiate(ghost, ghostPositions[counter], Quaternion.identity);
+                //    enemySpawned = true;
+
+                //    //Destroy Collider
+                //    triggerPositions.RemoveAt(counter);
+
+                //    //Spawn next trigger
+                //    Instantiate(triggerPrefab, triggerPositions[counter], Quaternion.identity);
+
+                //    counter++;
+
+                //    Debug.Log("Pasaste por el Vector3 n: " + counter);
+                //}
+            
+            
 
         }
-       
-        
+
+
 
         //Instantiate(ghost, ghostPositions[0], ghostSpawn.rotation);
         //enemySpawned = true;
@@ -91,7 +146,7 @@ public class PlayerStats : CharacterStats
         //ghostSpawn.position = new Vector3(10, 12, 64);
         //Destroy(collider);
 
-    
+
 
 
 
