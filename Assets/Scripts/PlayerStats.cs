@@ -134,7 +134,7 @@ public class PlayerStats : CharacterStats
             
             
 
-        }
+        
 
 
 
@@ -153,7 +153,7 @@ public class PlayerStats : CharacterStats
 
 
 
-        if (other.transform.tag == "GhostHitBox")
+        if (collider.transform.tag == "GhostHitBox")
         {
             OnPoisoned();
         }
