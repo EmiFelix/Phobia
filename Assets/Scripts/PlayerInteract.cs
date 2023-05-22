@@ -56,14 +56,16 @@ public class PlayerInteract : MonoBehaviour
         {
             PlayerActions();
         }
+
     }
 
     private void PlayerActions()
     {
         RaycastHit hit;
-
+        
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, pickupLayer))
         {
+            
             Weapon newItem = hit.transform.GetComponent<ItemObject>().item as Weapon;
             if (inventory.hasItemInList(newItem))
             {
@@ -75,14 +77,13 @@ public class PlayerInteract : MonoBehaviour
                 inventory.AddItem(newItem);
             }
 
-
             Destroy(hit.transform.gameObject);
-
-
         }
+
 
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, lightBox) && equipManager.currentWeapon.weaponType == WeaponType.Fuse && equipManager.currentWeapon.magazineSize == minRequiredToInteract)
         {
+            
             equipManager.DestroyWeapon();
             luz1.SetActive(true);
             luz2.SetActive(true);
@@ -94,6 +95,7 @@ public class PlayerInteract : MonoBehaviour
 
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, lightPanel) && puzzle1Solved == true)
         {
+            
             hit.collider.gameObject.GetComponent<LightRoomManager>().LightsInteract();
             Destroy(unlockDoor);
         }
@@ -106,36 +108,6 @@ public class PlayerInteract : MonoBehaviour
             hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
             equipManager.DestroyWeapon();
         }
-
-        //Door 2
-        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door2) && equipManager.currentWeapon.weaponType == WeaponType.Key)
-        {
-            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
-            equipManager.DestroyWeapon();
-        }
-
-        //Door 3
-        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door3) && equipManager.currentWeapon.weaponType == WeaponType.Key)
-        {
-            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
-            equipManager.DestroyWeapon();
-        }
-
-        //Door 4
-        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door4) && equipManager.currentWeapon.weaponType == WeaponType.Key)
-        {
-            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
-            equipManager.DestroyWeapon();
-        }
-
-        //Door 5
-        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door5) && equipManager.currentWeapon.weaponType == WeaponType.Key)
-        {
-            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
-            equipManager.DestroyWeapon();
-        }
-
-        //TODO: CAJONES
     }
 
     

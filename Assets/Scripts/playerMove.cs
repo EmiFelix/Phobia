@@ -45,6 +45,11 @@ public class playerMove : MonoBehaviour
 
 
         Vector3 move = transform.right * x + transform.forward * z;
+        
+        //if(move.magnitude > 1)
+        //{
+        //    move.Normalize();
+        //}
 
         controler.Move(move * speed * Time.deltaTime);
 
