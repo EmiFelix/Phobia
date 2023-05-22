@@ -20,5 +20,5 @@ MonoBehaviour:
   magazineCount: 1
   range: 4
   weaponType: 0
-  weaponStyle: 0
+  weaponStyle: 1
   magazineSizeINITIAL: 1

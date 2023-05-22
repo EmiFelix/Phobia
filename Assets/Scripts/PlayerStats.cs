@@ -28,15 +28,18 @@ public class PlayerStats : CharacterStats
         InitVariables();
 
         //Enemy Spawns
-        ghostPositions.Add(ghostSpawn.position = new Vector3(11, 12, 35));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(14, 13, 41));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(3, 11, 44));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(-1, 11, 59));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(10, 12, 64));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(11, 11.5f, 35));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(14, 11.5f, 40));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(3, 11.5f, 44));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(-1, 11.5f, 59));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(10, 11.5f, 64));
 
         //Trigger Spawns
-        triggerPositions.Add(triggerSpawn.position = new Vector3(16.5f, 12.5f, 35f));
-        triggerPositions.Add(triggerSpawn.position = new Vector3(11, 12.5f, 41));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(16.5f, 11.5f, 35f));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(11, 11.5f, 41));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(2, 11.5f, 34));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(-4, 11.5f, 55));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(9.5f, 11.5f, 63));
 
     }
 
@@ -52,51 +55,22 @@ public class PlayerStats : CharacterStats
     }
 
     //TODO: PLEASE MIGRAR TODAS ESTAS COSAS A UN GAME MANAGER >.<"
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-
-
-        if (other.CompareTag("Player"))
+        if (collider.transform.tag == "Trigger")
         {
-
-            //Player Collide with the trigger
-            Debug.Log("Pasando por el trigger");
-
-            if (counter < triggerPositions.Count)
-            {
-                //Spawn Enemy
-                Instantiate(ghost, ghostPositions[counter], Quaternion.identity);
-                enemySpawned = true;
-
-                //Destroy Collider
-                Destroy(GetComponent<Collider>());
-
-                //Spawn next trigger
-                Instantiate(triggerPrefab, triggerPositions[counter], Quaternion.identity);
-
-                counter++;
-            }
-
+            Debug.Log("Trigger:");
+            Instantiate(ghost, ghostPositions[counter], ghostSpawn.rotation);
+            Debug.Log("Spawn fantasma:" + counter);
+            enemySpawned = true;
+            counter++;
+            Destroy(collider);
+            Instantiate(triggerPrefab, triggerPositions[counter], triggerSpawn.rotation);
+            Debug.Log("Spawn trigger:" + counter);
         }
-       
-        
+            
 
-        //Instantiate(ghost, ghostPositions[0], ghostSpawn.rotation);
-        //enemySpawned = true;
-        //Destroy(collider);
-
-        //TODO: SWITCH para que cada vez que toca un trigger cambie a la siguiente posicion:
-        //ghostSpawn.position = new Vector3(3, 11, 44);
-        //ghostSpawn.position = new Vector3(-1, 11, 59);
-        //ghostSpawn.position = new Vector3(10, 12, 64);
-        //Destroy(collider);
-
-    
-
-
-
-
-        if (other.transform.tag == "GhostHitBox")
+        if (collider.transform.tag == "GhostHitBox")
         {
             OnPoisoned();
         }
