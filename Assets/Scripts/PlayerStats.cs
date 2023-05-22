@@ -57,101 +57,18 @@ public class PlayerStats : CharacterStats
     //TODO: PLEASE MIGRAR TODAS ESTAS COSAS A UN GAME MANAGER >.<"
     private void OnTriggerEnter(Collider collider)
     {
-
-
         if (collider.transform.tag == "Trigger")
         {
-
-            //Player Collide with the trigger
-            Debug.Log("Pasando por el trigger");
-
-            //Spawn Enemy
-            Instantiate(ghost, ghostSpawn.position, ghostSpawn.rotation);
+            Debug.Log("Trigger:");
+            Instantiate(ghost, ghostPositions[counter], ghostSpawn.rotation);
+            Debug.Log("Spawn fantasma:" + counter);
             enemySpawned = true;
-            ghostSpawn.position = ghostPositions[counter];
-
-            //Destroy Collider
-            Destroy(collider);
-
-            //Spawn next trigger
-            Instantiate(triggerPrefab, triggerSpawn.position, Quaternion.identity);
-            triggerSpawn.position = triggerPositions[counter];
-
             counter++;
-
-            Debug.Log("Pasaste por el Vector3 n: " + counter);
-
-
-                //if (counter < triggerPositions.Count)
-                //{
-                //    //Spawn Enemy
-                //    Instantiate(ghost, ghostPositions[counter], Quaternion.identity);
-                //    enemySpawned = true;
-
-                //    //Destroy Collider
-                //    //triggerPositions.Remove(position);
-
-                //    //Spawn next trigger
-                //    Instantiate(triggerPrefab, position, Quaternion.identity);
-
-                //    counter = counter + 1;
-
-                //    Debug.Log("Pasaste por el Vector3 n: " + counter);
-                //}
-            };
-            //for(int i = 0; i < triggerPositions.Count; i++)
-            //{
-            //    //Spawn Enemy
-            //    Instantiate(ghost, ghostPositions[i], Quaternion.identity);
-            //    enemySpawned = true;
-
-            //    //Destroy Collider
-            //    triggerPositions.RemoveAt(i);
-
-            //    //Spawn next trigger
-            //    Instantiate(triggerPrefab, triggerPositions[i], Quaternion.identity);
-
-            //    i++;
-
-            //    Debug.Log("Pasaste por el Vector3 n: " + i);
-            //}
-                //if (counter < triggerPositions.Count)
-                //{
-                //    //Spawn Enemy
-                //    Instantiate(ghost, ghostPositions[counter], Quaternion.identity);
-                //    enemySpawned = true;
-
-                //    //Destroy Collider
-                //    triggerPositions.RemoveAt(counter);
-
-                //    //Spawn next trigger
-                //    Instantiate(triggerPrefab, triggerPositions[counter], Quaternion.identity);
-
-                //    counter++;
-
-                //    Debug.Log("Pasaste por el Vector3 n: " + counter);
-                //}
+            Destroy(collider);
+            Instantiate(triggerPrefab, triggerPositions[counter], triggerSpawn.rotation);
+            Debug.Log("Spawn trigger:" + counter);
+        }
             
-            
-
-        
-
-
-
-        //Instantiate(ghost, ghostPositions[0], ghostSpawn.rotation);
-        //enemySpawned = true;
-        //Destroy(collider);
-
-        //TODO: SWITCH para que cada vez que toca un trigger cambie a la siguiente posicion:
-        //ghostSpawn.position = new Vector3(3, 11, 44);
-        //ghostSpawn.position = new Vector3(-1, 11, 59);
-        //ghostSpawn.position = new Vector3(10, 12, 64);
-        //Destroy(collider);
-
-
-
-
-
 
         if (collider.transform.tag == "GhostHitBox")
         {
