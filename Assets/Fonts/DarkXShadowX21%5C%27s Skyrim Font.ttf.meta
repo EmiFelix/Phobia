@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dac82c4d8d65b8942a243a4eb5759725
+guid: 588763b3933a17f4dacdc30699697138
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,9 +9,8 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Ghostphobia
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: e778249ba203aba42ac039510549121d, type: 3}
+  - DarksSkyrimFont
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
