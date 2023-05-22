@@ -55,31 +55,33 @@ public class PlayerStats : CharacterStats
     }
 
     //TODO: PLEASE MIGRAR TODAS ESTAS COSAS A UN GAME MANAGER >.<"
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
 
 
-        if (other.CompareTag("Trigger"))
+        if (collider.transform.tag == "Trigger")
         {
 
             //Player Collide with the trigger
             Debug.Log("Pasando por el trigger");
 
-            triggerPositions.ForEach(position =>
-            {
-                //Spawn Enemy
-                Instantiate(ghost, ghostPositions[counter], Quaternion.identity);
-                enemySpawned = true;
+            //Spawn Enemy
+            Instantiate(ghost, ghostSpawn.position, ghostSpawn.rotation);
+            enemySpawned = true;
+            ghostSpawn.position = ghostPositions[counter];
 
-                //Destroy Collider
-                //triggerPositions.Remove(position);
+            //Destroy Collider
+            Destroy(collider);
 
-                //Spawn next trigger
-                Instantiate(triggerPrefab, position, Quaternion.identity);
+            //Spawn next trigger
+            Instantiate(triggerPrefab, triggerSpawn.position, Quaternion.identity);
+            triggerSpawn.position = triggerPositions[counter];
 
-                counter = counter + 1;
+            counter++;
 
-                Debug.Log("Pasaste por el Vector3 n: " + counter);
+            Debug.Log("Pasaste por el Vector3 n: " + counter);
+
+
                 //if (counter < triggerPositions.Count)
                 //{
                 //    //Spawn Enemy
@@ -96,7 +98,7 @@ public class PlayerStats : CharacterStats
 
                 //    Debug.Log("Pasaste por el Vector3 n: " + counter);
                 //}
-            });
+            };
             //for(int i = 0; i < triggerPositions.Count; i++)
             //{
             //    //Spawn Enemy
