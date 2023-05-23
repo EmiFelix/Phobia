@@ -13,7 +13,7 @@ public class RotateWheel : MonoBehaviour
     void Start()
     {
         coroutineAllowed = true;
-        numberShown = 6;
+        numberShown = 9;
     }
 
     private void OnMouseDown()

@@ -5,15 +5,14 @@ using UnityEngine;
 public class LockControl : MonoBehaviour
 {
     private int[] result, correctCombination;
-    public Animator TapaCaja;
+    //private Animator Cajon;
 
     private void Start()
     {
-        result = new int[] { 6, 6, 6 };
+        result = new int[] { 9, 9, 9 };
         correctCombination = new int[] { 3, 7, 9 };
         RotateWheel.Rotated += CheckResults;
     }
-
 
     private void CheckResults(string wheelName, int number)
     {
@@ -33,11 +32,11 @@ public class LockControl : MonoBehaviour
         if (result[0] == correctCombination[0] && result[1] == correctCombination[1] && result[2] == correctCombination[2])
         {
             Debug.Log("Opened hehe");
-            TapaCaja.SetBool("Open", true);
+            //Cajon.SetBool("Open", true);
         }
     }
 
-        private void OnDestroy()
+    private void OnDestroy()
     {
         RotateWheel.Rotated -= CheckResults;
     }
