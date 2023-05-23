@@ -4784,6 +4784,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08415de5c893c894d997b3ffcf67e20c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73b6b07b40168f541a4e383fac5b4037, type: 2}
     - target: {fileID: 919132149155446097, guid: 08415de5c893c894d997b3ffcf67e20c, type: 3}
       propertyPath: m_Name
       value: Cup
@@ -49376,6 +49380,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: deec1c16aaa05bf4c87e11cafb54681e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ddfe5c980d8faf47b248defa103ea78, type: 2}
     - target: {fileID: 919132149155446097, guid: deec1c16aaa05bf4c87e11cafb54681e, type: 3}
       propertyPath: m_Name
       value: Frame05 (3)
