@@ -43,7 +43,6 @@ public class EquipmentManager : MonoBehaviour
         {
             UnequipWeapon();
             EquipWeapon(inventory.GetItem(2));
-
         }
 
     }
