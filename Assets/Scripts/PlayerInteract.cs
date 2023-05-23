@@ -70,7 +70,13 @@ public class PlayerInteract : MonoBehaviour
             if (inventory.hasItemInList(newItem))
             {
                 newItem.magazineSize += 1;
-                playerHUD.UpdateWeaponUI(newItem);
+
+                if(equipManager.currentWeapon == newItem)
+                {
+                    playerHUD.UpdateWeaponUI(newItem);
+                }
+                
+                
             }
             else
             {

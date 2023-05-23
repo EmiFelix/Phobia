@@ -12,6 +12,8 @@ public class PlayerHUD : MonoBehaviour
 
     [SerializeField] private Sprite genericSprite;
 
+    public EquipmentManager equipManager;
+
     
 
     public void UpdateHP(int currentHP, int maxHP)

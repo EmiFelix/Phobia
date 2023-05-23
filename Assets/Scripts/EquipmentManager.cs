@@ -24,14 +24,12 @@ public class EquipmentManager : MonoBehaviour
 
     private void Update()
     {
-        
-
         //if any key is equiped:
         if (Input.GetKeyDown(KeyCode.Alpha1) && currentEquip != 0 && inventory.GetItem(0))
         {
             UnequipWeapon();
             EquipWeapon(inventory.GetItem(0));
-            
+
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && currentEquip != 1 && inventory.GetItem(1))
@@ -58,7 +56,7 @@ public class EquipmentManager : MonoBehaviour
         currentWeapon = weapon;
         hud.UpdateWeaponUI(weapon);
     }
-    
+
     public void UnequipWeapon()
     {
         //TODO: Anim
@@ -72,7 +70,6 @@ public class EquipmentManager : MonoBehaviour
         currentWeapon = null;
         currentEquip = -1;
         Destroy(currentWeaponObject);
-
     }
 
     private void InitVariables()

@@ -26,9 +26,9 @@ public class Inventory : MonoBehaviour
         }
         weapons[newItemIndex] = newItem;
 
-        
 
-        if(!equipManager.currentWeaponObject)
+
+        if (equipManager.currentWeapon == null && GetItemListLength() != 0)
         {
             equipManager.EquipWeapon(newItem);
             hud.UpdateWeaponUI(newItem);
@@ -68,6 +68,11 @@ public class Inventory : MonoBehaviour
                 temp = false;
         }
         return temp;
+    }
+
+    public int GetItemListLength()
+    {
+        return weapons.Length;
     }
 
 }
