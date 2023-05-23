@@ -22,12 +22,15 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private PlayerHUD playerHUD;
 
     public EquipmentManager equipManager;
+    public FusiblesListUIManager fusiblesList;
 
     [SerializeField] private GameObject luz1;
     [SerializeField] private GameObject luz2;
     [SerializeField] private GameObject luz3;
     [SerializeField] private GameObject lever;
     private bool puzzle1Solved;
+
+    [SerializeField] private GameObject fusiblesParent;
 
     [SerializeField] private GameObject unlockDoor;
 
@@ -67,8 +70,12 @@ public class PlayerInteract : MonoBehaviour
         {
             
             Weapon newItem = hit.transform.GetComponent<ItemObject>().item as Weapon;
+
+           
+
             if (inventory.hasItemInList(newItem))
             {
+                
                 newItem.magazineSize += 1;
 
                 if(equipManager.currentWeapon == newItem)
@@ -81,6 +88,11 @@ public class PlayerInteract : MonoBehaviour
             else
             {
                 inventory.AddItem(newItem);
+            }
+
+            if (newItem.weaponType == WeaponType.Fuse)
+            {
+                fusiblesList.ChangeColor(newItem.magazineSize);
             }
 
             Destroy(hit.transform.gameObject);
@@ -97,13 +109,16 @@ public class PlayerInteract : MonoBehaviour
             
 
             puzzle1Solved = true;
+            Destroy(unlockDoor);
+            Destroy(fusiblesParent);
         }
 
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, lightPanel) && puzzle1Solved == true)
         {
             
             hit.collider.gameObject.GetComponent<LightRoomManager>().LightsInteract();
-            Destroy(unlockDoor);
+            
+
         }
 
 
