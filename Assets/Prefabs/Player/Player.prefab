@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2172398418532618057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 0, z: 0.667}
+  m_LocalPosition: {x: 0.67, y: -0.599, z: 1.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2172398419416382847}
-  m_RootOrder: 1
+  m_Father: {fileID: 2172398419794181812}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2172398419174303652
 GameObject:
@@ -100,7 +100,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2172398419174303653}
-  - {fileID: 2172398418532618058}
   - {fileID: 2172398420271182973}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -194,13 +193,6 @@ MonoBehaviour:
   groundMasck:
     serializedVersion: 2
     m_Bits: 0
-  trigger:
-    serializedVersion: 2
-    m_Bits: 0
-  ghost: {fileID: 638622479920515778, guid: a980ef0b5e4119d4e87b8655e8b07696, type: 3}
-  triggerEmpty: {fileID: 0}
-  ghostSpawn: {fileID: 0}
-  enemySpawned: 0
 --- !u!114 &2172398419416382722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,10 +247,12 @@ MonoBehaviour:
   minRequiredToInteract: 0
   playerHUD: {fileID: 2172398419416382725}
   equipManager: {fileID: 2172398419416382726}
+  fusiblesList: {fileID: 0}
   luz1: {fileID: 0}
   luz2: {fileID: 0}
   luz3: {fileID: 0}
   lever: {fileID: 0}
+  fusiblesParent: {fileID: 0}
   unlockDoor: {fileID: 0}
 --- !u!114 &2172398419416382724
 MonoBehaviour:
@@ -275,6 +269,16 @@ MonoBehaviour:
   HP: 0
   maxHP: 0
   isDead: 0
+  trigger:
+    serializedVersion: 2
+    m_Bits: 0
+  ghost: {fileID: 0}
+  triggerPrefab: {fileID: 0}
+  ghostSpawn: {fileID: 0}
+  triggerSpawn: {fileID: 0}
+  enemySpawned: 0
+  ghostPositions: []
+  triggerPositions: []
 --- !u!114 &2172398419416382725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +295,7 @@ MonoBehaviour:
   maxHPtext: {fileID: 0}
   weaponUI: {fileID: 0}
   genericSprite: {fileID: 0}
+  equipManager: {fileID: 0}
 --- !u!114 &2172398419416382726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +343,8 @@ Transform:
   m_LocalPosition: {x: -1.9349079, y: -9.6019945, z: 6.717949}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2172398418532618058}
   m_Father: {fileID: 2172398420271182973}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -438,7 +444,7 @@ Transform:
   m_Children:
   - {fileID: 2172398419794181812}
   m_Father: {fileID: 2172398419416382847}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2172398420271182974
 MonoBehaviour:
@@ -452,6 +458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c23841c9fe813f4c88984699b151011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: 0.005
-  Frequency: 12
-  Smooth: 14
+  Amount: 0.001
+  Frequency: 4.7
+  Smooth: 100

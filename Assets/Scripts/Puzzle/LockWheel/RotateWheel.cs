@@ -30,9 +30,11 @@ public class RotateWheel : MonoBehaviour
 
         for (int i = 0; i <= 11; i++)
         {
-            transform.Rotate(0f, -3f, -3f);
+            transform.Rotate(0f, -3f, 0f);
             yield return new WaitForSeconds(0.01f);
         }
+
+        
 
         coroutineAllowed = true;
         numberShown += 1;

@@ -40,13 +40,13 @@ public class playerMove : MonoBehaviour
         {
             velocity.y = -2;
         }
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
 
 
         Vector3 move = transform.right * x + transform.forward * z;
-        
-        //if(move.magnitude > 1)
+
+        //if (move.magnitude > 1)
         //{
         //    move.Normalize();
         //}
