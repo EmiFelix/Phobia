@@ -23,12 +23,13 @@ public class playerMove : MonoBehaviour
 
     bool isgrounded;
 
-    public AudioClip walkingSound;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
+    private bool activeH;
+    private bool activeV;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -39,26 +40,11 @@ public class playerMove : MonoBehaviour
 
         if (isgrounded && velocity.y < 0)
         {
-            velocity.y = -3;
+            velocity.y = -2f;
         }
 
-        //Sonido caminata
-        if (isgrounded && velocity.magnitude > 0.1f)
-        {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.clip = walkingSound;
-                audioSource.Play();
-            }
-            
-        }
-        else
-        {
-            audioSource.Stop();
-        }
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-
 
         Vector3 move = transform.right * x + transform.forward * z;
 
@@ -74,9 +60,44 @@ public class playerMove : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controler.Move(velocity * Time.deltaTime);
+
+        //Sonido caminata
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            if(activeV == false)
+            {
+                activeH = true;
+                audioSource.Play();
+            }
+            
+        }
+      
+        
+        if (Input.GetButtonDown("Vertical"))
+        {
+            if(activeH == false)
+            {
+                activeV = true;
+                audioSource.Play();
+            }            
+        }
+
+       if (Input.GetButtonUp("Horizontal"))
+        {
+            activeH = false;
+            if(activeV == false)
+            {
+            audioSource.Pause();
+            }
+        }
+
+        if (Input.GetButtonUp("Vertical"))
+        {
+            activeV = false;
+            if (activeH == false)
+            {
+                audioSource.Pause();
+            }
+        }
     }
-
-    
-
-
 }
