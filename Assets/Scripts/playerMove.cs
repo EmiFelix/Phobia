@@ -21,24 +21,40 @@ public class playerMove : MonoBehaviour
 
     Vector3 velocity;
 
-    bool isgraundead;
+    bool isgrounded;
 
-
-
+    public AudioClip walkingSound;
+    private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //creamos la esfera
-        isgraundead = Physics.CheckSphere(groundCheck.position, graundDistance, groundMasck);
+        isgrounded = Physics.CheckSphere(groundCheck.position, graundDistance, groundMasck);
 
-        if (isgraundead && velocity.y < 0)
+        if (isgrounded && velocity.y < 0)
         {
-            velocity.y = -2;
+            velocity.y = -3;
+        }
+
+        //Sonido caminata
+        if (isgrounded && velocity.magnitude > 0.1f)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = walkingSound;
+                audioSource.Play();
+            }
+            
+        }
+        else
+        {
+            audioSource.Stop();
         }
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -46,17 +62,11 @@ public class playerMove : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        //if (move.magnitude > 1)
-        //{
-        //    move.Normalize();
-        //}
-
         controler.Move(move * speed * Time.deltaTime);
 
-
         //detectamos el salto
-        if (Input.GetButtonDown("Jump") && isgraundead)
-            if (Input.GetButtonDown("Jump") && isgraundead)
+        if (Input.GetButtonDown("Jump") && isgrounded)
+            if (Input.GetButtonDown("Jump") && isgrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
             }
