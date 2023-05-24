@@ -10,8 +10,8 @@ public class HeadBobSystem : MonoBehaviour
     [Range(1f, 30f)]
     public float Frequency = 10.0f;
 
-    [Range(0f, 100f)]
-    public float Smooth = 0f;
+    [Range(10f, 100f)]
+    public float Smooth = 10f;
 
     Vector3 StartPos;
     
