@@ -109,9 +109,6 @@ public class EnemyScript : MonoBehaviour
     {
         agent.SetDestination(player.position);
         actualObj = player.position;
-
-
-
     }
     private void AttackPlayer()
     {

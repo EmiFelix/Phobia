@@ -194,7 +194,7 @@ MonoBehaviour:
   groundMasck:
     serializedVersion: 2
     m_Bits: 0
-  walkingSound: {fileID: 8300000, guid: 09c93ccf1883844499e75046d1806827, type: 3}
+  audioSource: {fileID: 0}
 --- !u!114 &2172398419416382722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 2172398419794181811}
   - component: {fileID: 2172398419794181810}
   - component: {fileID: 2172398419794181813}
+  - component: {fileID: 4969834109660843717}
   m_Layer: 16
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -511,6 +512,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 200
   playerbody: {fileID: 2172398419416382847}
+--- !u!114 &4969834109660843717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2172398419794181809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393a30650fe71ed45b59e3265a86b3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSpeed: 5
+  maxZoom: 10
+  minZoom: 20
 --- !u!1 &2172398420271182972
 GameObject:
   m_ObjectHideFlags: 0
