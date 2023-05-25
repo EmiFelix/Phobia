@@ -42,12 +42,14 @@ public class PlayerInteract : MonoBehaviour
     public Animator Door5;
     public Animator Door6;
 
+    public AudioSource audioSource;
+
     private void Start()
     {
         GetReferences();
         minRequiredToInteract = 6;
         puzzle1Solved = false;
-
+        
     }
 
     private void Update()
@@ -133,13 +135,15 @@ public class PlayerInteract : MonoBehaviour
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door) && equipManager.currentWeapon.weaponType == WeaponType.Key)
         {
             hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            audioSource.Play();
             Door.SetBool("Open", true);           
             equipManager.DestroyWeapon();
         }
 
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door2) && equipManager.currentWeapon.weaponType == WeaponType.Key)
         {
-            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));            
+            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0)); 
+            audioSource.Play();
             Door2.SetBool("Open2", true);
             equipManager.DestroyWeapon();
         }
@@ -147,6 +151,7 @@ public class PlayerInteract : MonoBehaviour
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door3) && equipManager.currentWeapon.weaponType == WeaponType.Key)
         {
             hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            audioSource.Play();
             Door3.SetBool("Open", true);
             equipManager.DestroyWeapon();
         }
@@ -154,6 +159,7 @@ public class PlayerInteract : MonoBehaviour
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door4) && equipManager.currentWeapon.weaponType == WeaponType.Key)
         {
             hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            audioSource.Play();
             Door4.SetBool("Open", true);
             equipManager.DestroyWeapon();
         }
@@ -161,6 +167,7 @@ public class PlayerInteract : MonoBehaviour
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door5) && equipManager.currentWeapon.weaponType == WeaponType.Key)
         {
             hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            audioSource.Play();
             Door5.SetBool("Open", true);
             equipManager.DestroyWeapon();
         }
@@ -168,6 +175,7 @@ public class PlayerInteract : MonoBehaviour
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door6) && equipManager.currentWeapon.weaponType == WeaponType.Key)
         {
             hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            audioSource.Play();
             Door6.SetBool("Open", true);
             equipManager.DestroyWeapon();
         }
