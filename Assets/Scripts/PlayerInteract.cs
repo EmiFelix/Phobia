@@ -11,6 +11,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private LayerMask door3;
     [SerializeField] private LayerMask door4;
     [SerializeField] private LayerMask door5;
+    [SerializeField] private LayerMask door6;
     [SerializeField] private LayerMask lightBox;
     [SerializeField] private LayerMask lightPanel;
     [SerializeField] private int minRequiredToInteract;
@@ -34,7 +35,12 @@ public class PlayerInteract : MonoBehaviour
 
     [SerializeField] private GameObject unlockDoor;
 
-
+    public Animator Door;
+    public Animator Door2;
+    public Animator Door3;
+    public Animator Door4;
+    public Animator Door5;
+    public Animator Door6;
 
     private void Start()
     {
@@ -127,6 +133,42 @@ public class PlayerInteract : MonoBehaviour
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door) && equipManager.currentWeapon.weaponType == WeaponType.Key)
         {
             hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            Door.SetBool("Open", true);           
+            equipManager.DestroyWeapon();
+        }
+
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door2) && equipManager.currentWeapon.weaponType == WeaponType.Key)
+        {
+            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));            
+            Door2.SetBool("Open2", true);
+            equipManager.DestroyWeapon();
+        }
+
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door3) && equipManager.currentWeapon.weaponType == WeaponType.Key)
+        {
+            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            Door3.SetBool("Open", true);
+            equipManager.DestroyWeapon();
+        }
+
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door4) && equipManager.currentWeapon.weaponType == WeaponType.Key)
+        {
+            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            Door4.SetBool("Open", true);
+            equipManager.DestroyWeapon();
+        }
+
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door5) && equipManager.currentWeapon.weaponType == WeaponType.Key)
+        {
+            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            Door5.SetBool("Open", true);
+            equipManager.DestroyWeapon();
+        }
+
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, door6) && equipManager.currentWeapon.weaponType == WeaponType.Key)
+        {
+            hit.collider.transform.parent.Rotate(new Vector3(0, 90, 0));
+            Door6.SetBool("Open", true);
             equipManager.DestroyWeapon();
         }
     }
