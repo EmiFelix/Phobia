@@ -5,13 +5,13 @@ using UnityEngine;
 public class LeverControl : MonoBehaviour
 {
     private int[] result, correctCombination;
-    //public Animator;
+    public Animator CajonLever;
     private AudioSource audioSource;
 
     private void Start()
     {
         result = new int[] { 1, 1, 1, 1 };
-        correctCombination = new int[] { 1, 2, 3, 4 };
+        correctCombination = new int[] { 1, 3, 2, 4 };
         LeverMove.Rotated += CheckResults;
         audioSource = GetComponent<AudioSource>();
     }
@@ -38,7 +38,7 @@ public class LeverControl : MonoBehaviour
         {
             Debug.Log("Opened hehe");
             audioSource.Play();
-            //TapaCaja.SetBool("Open", true);          
+            CajonLever.SetBool("Open", true);          
         }
     }
 

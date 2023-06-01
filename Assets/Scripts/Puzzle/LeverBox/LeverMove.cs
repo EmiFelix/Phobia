@@ -8,11 +8,9 @@ public class LeverMove : MonoBehaviour
     public static event Action<string, int> Rotated = delegate { };
     private bool coroutineAllowed;
     private int numberShown;
-
-    public float moveSpeed = 1f;  
+    public float moveSpeed = 1f;
     public float moveDuration = 1f;
     public float moveDistance = 1f;
-
 
     void Start()
     {
@@ -24,9 +22,66 @@ public class LeverMove : MonoBehaviour
     {
         if (coroutineAllowed)
         {
-            StartCoroutine("LeverMoveF");
+            StartCoroutine("MoveLeverCoroutine");
         }
     }
+
+    private IEnumerator MoveLeverCoroutine()
+    {
+        coroutineAllowed = false;
+
+        if (numberShown != 4)
+        {
+            yield return StartCoroutine(MoveLeverDown());
+            numberShown++;
+        }
+        else if(numberShown != 1) 
+        {
+            yield return StartCoroutine(MoveLeverUp());
+            numberShown--;
+        }
+
+        coroutineAllowed = true;
+
+        Rotated(name, numberShown);
+    }
+
+    private IEnumerator MoveLeverDown()
+    {
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = new Vector3(startPosition.x, startPosition.y - moveDistance, startPosition.z);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < moveDuration)
+        {
+            float t = elapsedTime / moveDuration;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPosition;
+    }
+
+    private IEnumerator MoveLeverUp()
+    {
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = new Vector3(startPosition.x, startPosition.y + moveDistance, startPosition.z);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < moveDuration)
+        {
+            float t = elapsedTime / moveDuration;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPosition;
+    }
+}
 
     //private IEnumerator LeverMoveF()
     //{
@@ -39,7 +94,7 @@ public class LeverMove : MonoBehaviour
     //        yield return new WaitForSeconds(0.01f);
     //    }
 
-        
+
 
     //    coroutineAllowed = true;
     //    numberShown += 1;
@@ -52,33 +107,9 @@ public class LeverMove : MonoBehaviour
     //    Rotated(name, numberShown);
     //}
 
-    private IEnumerator LeverMoveF()
-    {
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = new Vector3(startPosition.x, startPosition.y - moveDistance, startPosition.z);
-        float elapsedTime = 0f;
 
-        while (elapsedTime < moveDuration)
-        {
-            float newY = Mathf.Lerp(startPosition.y, targetPosition.y, elapsedTime / moveDuration);
-            transform.position = new Vector3(startPosition.x, newY, startPosition.z);
 
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
 
-        transform.position = targetPosition;
 
-        numberShown += 1; 
-        Debug.Log("Movimientos realizados: " + numberShown);
 
-        coroutineAllowed = true;  
 
-        if (numberShown > 4)
-        {
-            numberShown = 1;
-        }
-
-        Rotated(name, numberShown);
-    }
-}
