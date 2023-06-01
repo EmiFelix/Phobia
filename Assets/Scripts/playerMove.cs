@@ -38,10 +38,10 @@ public class playerMove : MonoBehaviour
         //creamos la esfera
         isgrounded = Physics.CheckSphere(groundCheck.position, graundDistance, groundMasck);
 
-        if (isgrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
+        //if (isgrounded && velocity.y < 0)
+        //{
+        //    velocity.y = -2f;
+        //}
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
