@@ -32,11 +32,13 @@ public class EnemyScript : MonoBehaviour
     Vector3 actualObj;
     bool isMoving;
 
+    public AudioSource playerAttacked;
+
     public void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-
+        playerAttacked = GetComponent<AudioSource>();
 
     }
 
@@ -52,8 +54,12 @@ public class EnemyScript : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        if (playerInSightRange && !playerInAttackRange) {
+            ChasePlayer();
+            playerAttacked.Play(); 
+        }
+            if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        
 
         Vector3 dir = transform.forward * actualObj.z + transform.right * actualObj.x;
         

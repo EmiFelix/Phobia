@@ -22,6 +22,9 @@ public class PlayerStats : CharacterStats
 
     private int counter = 0;
 
+    
+
+
     private void Start()
     {
         GetReferences();
@@ -42,6 +45,8 @@ public class PlayerStats : CharacterStats
         triggerPositions.Add(triggerSpawn.position = new Vector3(-4, 11.5f, 53));
         triggerPositions.Add(triggerSpawn.position = new Vector3(-0.5f, 11.5f, 62));
         triggerPositions.Add(triggerSpawn.position = new Vector3(10, 11.5f, 63));
+
+        
 
     }
 
@@ -71,10 +76,9 @@ public class PlayerStats : CharacterStats
             Debug.Log("Spawn trigger:" + counter);
         }
             
-
         if (collider.transform.tag == "GhostHitBox")
         {
-            OnPoisoned();
+            OnPoisoned(); 
         }
     }
 
@@ -86,9 +90,9 @@ public class PlayerStats : CharacterStats
     {
         if (!isPoisoned)
         {
-            isPoisoned = true;
-            StartCoroutine(PoisonCoroutine());
-        }
+            isPoisoned = true;             
+            StartCoroutine(PoisonCoroutine());            
+        }       
     }
 
     private IEnumerator PoisonCoroutine()
@@ -96,11 +100,11 @@ public class PlayerStats : CharacterStats
         while (isPoisoned)
         {
             // Wait for the specified interval before taking damage
-            yield return new WaitForSeconds(poisonInterval);
-
+            yield return new WaitForSeconds(poisonInterval);            
             // Take 1 damage
             takeDMG(1);
-        }
+           
+        }        
     }
 
     // Call this method to stop the poison effect
