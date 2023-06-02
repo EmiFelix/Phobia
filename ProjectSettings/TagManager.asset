@@ -7,6 +7,7 @@ TagManager:
   - Trigger
   - Enemy
   - GhostHitBox
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - whatIsPlayer
   - whatIsGround
   - Usable
-  - 
+  - Weapon
   - 
   - 
   - 

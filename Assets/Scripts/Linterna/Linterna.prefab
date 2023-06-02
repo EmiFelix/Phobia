@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4344719243863544883}
   - component: {fileID: 4344719243863544884}
   - component: {fileID: -4598553498620450252}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Linterna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4344719244057155523}
   - component: {fileID: 4344719244057155522}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: LuzLinterna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,6 +288,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 76a29c05ae6fa6446af36a07ac063d03, type: 3}
       propertyPath: m_Name
       value: linterna
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 76a29c05ae6fa6446af36a07ac063d03, type: 3}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76a29c05ae6fa6446af36a07ac063d03, type: 3}
