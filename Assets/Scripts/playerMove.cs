@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class playerMove : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     //variables para movernos
     public CharacterController controler;
     public float speed = 10f;
@@ -15,86 +13,91 @@ public class playerMove : MonoBehaviour
     public float jumpHeight = 3;
 
     public Transform groundCheck;
-
-    public float graundDistance = 0.3f;
-    public LayerMask groundMasck;
+    public float groundDistance = 0.3f;
+    public LayerMask groundMask;
 
     Vector3 velocity;
-
-    bool isgrounded;
+    bool isGrounded;
 
     public AudioSource audioSource;
     private bool activeH;
     private bool activeV;
 
-    void Start()
+    private void Update()
     {
-        
-    }
+        // Crear la esfera
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-    // Update is called once per frame
-    void Update()
-    {
-        //creamos la esfera
-        isgrounded = Physics.CheckSphere(groundCheck.position, graundDistance, groundMasck);
+        float x = 0f;
+        float z = 0f;
 
-        //if (isgrounded && velocity.y < 0)
-        //{
-        //    velocity.y = -2f;
-        //}
+        if (Input.GetKey(KeyCode.W))
+        {
+            z = 1f;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            z = -1f;
+        }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        if (Input.GetKey(KeyCode.A))
+        {
+            x = -1f;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            x = 1f;
+        }
 
         Vector3 move = transform.right * x + transform.forward * z;
+        move.Normalize(); // Normalize the movement vector
 
         controler.Move(move * speed * Time.deltaTime);
 
-        //detectamos el salto
-        if (Input.GetButtonDown("Jump") && isgrounded)
-            if (Input.GetButtonDown("Jump") && isgrounded)
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-            }
+        // Detectar el salto
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        }
 
         velocity.y += gravity * Time.deltaTime;
 
         controler.Move(velocity * Time.deltaTime);
 
-        //Sonido caminata
-        if (Input.GetButtonDown("Horizontal"))
+        // Sonido caminata
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
-            if(activeV == false)
+            if (!activeV)
             {
                 activeH = true;
                 audioSource.Play();
             }
-            
+
         }
-      
-        
-        if (Input.GetButtonDown("Vertical"))
+
+
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
         {
-            if(activeH == false)
+            if (!activeH)
             {
                 activeV = true;
                 audioSource.Play();
-            }            
-        }
-
-       if (Input.GetButtonUp("Horizontal"))
-        {
-            activeH = false;
-            if(activeV == false)
-            {
-            audioSource.Pause();
             }
         }
 
-        if (Input.GetButtonUp("Vertical"))
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        {
+            activeH = false;
+            if (!activeV)
+            {
+                audioSource.Pause();
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
         {
             activeV = false;
-            if (activeH == false)
+            if (!activeH)
             {
                 audioSource.Pause();
             }
