@@ -28,18 +28,20 @@ public class PlayerStats : CharacterStats
         InitVariables();
 
         //Enemy Spawns
-        ghostPositions.Add(ghostSpawn.position = new Vector3(11, 11.5f, 35));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(21, 11.5f, 38));
         ghostPositions.Add(ghostSpawn.position = new Vector3(14, 11.5f, 40));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(3, 11.5f, 44));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(-1, 11.5f, 59));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(10, 11.5f, 64));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(1.5f, 11.5f, 45));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(4.3f, 11.5f, 54.5f));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(-6, 11.5f, 68));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(11, 11.5f, 57.5f));
 
         //Trigger Spawns
-        triggerPositions.Add(triggerSpawn.position = new Vector3(16.5f, 11.5f, 35f));
-        triggerPositions.Add(triggerSpawn.position = new Vector3(11, 11.5f, 41));
-        triggerPositions.Add(triggerSpawn.position = new Vector3(2, 11.5f, 34));
-        triggerPositions.Add(triggerSpawn.position = new Vector3(-4, 11.5f, 55));
-        triggerPositions.Add(triggerSpawn.position = new Vector3(9.5f, 11.5f, 63));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(14.6f, 11.5f, 34.4f));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(11, 11.5f, 45));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(3.5f, 11.5f, 39));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(-4, 11.5f, 53));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(-0.5f, 11.5f, 62));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(10, 11.5f, 63));
 
     }
 
