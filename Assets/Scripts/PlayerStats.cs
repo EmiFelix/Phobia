@@ -13,6 +13,7 @@ public class PlayerStats : CharacterStats
     [SerializeField] private GameObject triggerPrefab;
     [SerializeField] private Transform ghostSpawn;
     [SerializeField] private Transform triggerSpawn;
+    [SerializeField] private LayerMask triggerSound;
     //[SerializeField] private GameObject player;
 
     public bool enemySpawned;
@@ -22,8 +23,7 @@ public class PlayerStats : CharacterStats
 
     private int counter = 0;
 
-    
-
+    public AudioSource jumpScare;
 
     private void Start()
     {
@@ -46,8 +46,6 @@ public class PlayerStats : CharacterStats
         triggerPositions.Add(triggerSpawn.position = new Vector3(-0.5f, 11.5f, 62));
         triggerPositions.Add(triggerSpawn.position = new Vector3(10, 11.5f, 63));
 
-        
-
     }
 
     private void GetReferences()
@@ -66,10 +64,11 @@ public class PlayerStats : CharacterStats
     {
         if (collider.transform.tag == "Trigger")
         {
+            jumpScare.Play();
             Debug.Log("Trigger:");
-            Instantiate(ghost, ghostPositions[counter], ghostSpawn.rotation);
+            Instantiate(ghost, ghostPositions[counter], ghostSpawn.rotation);            
             Debug.Log("Spawn fantasma:" + counter);
-            enemySpawned = true;
+            enemySpawned = true;            
             counter++;
             Destroy(collider);
             Instantiate(triggerPrefab, triggerPositions[counter], triggerSpawn.rotation);

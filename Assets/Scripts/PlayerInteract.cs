@@ -49,7 +49,6 @@ public class PlayerInteract : MonoBehaviour
         GetReferences();
         minRequiredToInteract = 6;
         puzzle1Solved = false;
-        
     }
 
     private void Update()
@@ -89,9 +88,7 @@ public class PlayerInteract : MonoBehaviour
                 if(equipManager.currentWeapon == newItem)
                 {
                     playerHUD.UpdateWeaponUI(newItem);
-                }
-                
-                
+                }                      
             }
             else
             {
