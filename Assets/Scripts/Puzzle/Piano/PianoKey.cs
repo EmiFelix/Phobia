@@ -5,11 +5,31 @@ using UnityEngine;
 public class PianoKey : MonoBehaviour
 {
     public PianoControl pianoController;
-    public string note;
-    public int i;
+    public string noteValue;
+    public AudioSource audioSource;
+
+
+    private void Start()
+    {
+        pianoController = FindObjectOfType<PianoControl>();
+    }
 
     private void OnMouseDown()
     {
-        pianoController.AddNote(note, i);
+        audioSource.Play();
+
+        if (noteValue == pianoController.correctCode[pianoController.codeEntered.Count])
+        {
+        pianoController.AddNote(noteValue);
+        }
+        else
+        {
+            pianoController.ResetCode();
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        audioSource.Stop();
     }
 }

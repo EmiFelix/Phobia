@@ -1,37 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PianoControl : MonoBehaviour
 {
-    public string[] correctCode = { "Do", "Re", "Mi", "Fa" };
-    private string[] codeEntered = new string[4];
+    public List<string> correctCode = new List<string>{};
+    public List<string> codeEntered = new List<string>();
+
+    //public PianoKey button1;
+    //public PianoKey button2;
+    //public PianoKey button3;
+    //public PianoKey button4;
 
     public Animator openedDrawer;
     public AudioSource audioSource;
 
     private void CorrectCodeEntered()
     {
-        bool isCorrectCode = true;
-
-        for (int i = 0; i < codeEntered.Length; i++)
+        if(SameLists(codeEntered, correctCode))
         {
-            if (codeEntered[i] != correctCode[i])
-            {
-                Debug.Log("no no no");
-                isCorrectCode = false;
-                break;
-            }            
-        }
-
-        if (isCorrectCode)
-        {
+            Debug.Log("ahoda zi");
             OpenDoor();
-        Debug.Log("ahoda zi");
-        } else
-        {
-            Debug.Log("No de nuevo decia");
+ 
         }
+        else
+        {
+            Debug.Log("no");
+        }
+    }
+
+    private bool SameLists(List<string> list1, List<string> list2)
+    {
+        if (list1.Count != list2.Count)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < list1.Count; i++)
+        {
+            if (list1[i] != list2[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void OpenDoor()
@@ -41,11 +55,25 @@ public class PianoControl : MonoBehaviour
         openedDrawer.SetBool("Open", true);
     }
 
-    public void AddNote(string note, int i)
+    public void AddNote(string noteValue)
     {
-        codeEntered[i] = note;
-
+        if (correctCode.Contains(noteValue))
+        {
+            Debug.Log("nota correcta");
+        codeEntered.Add(noteValue);
         CorrectCodeEntered();
+        }
+        else
+        {
+            Debug.Log("Reset codigo");
+            codeEntered.Clear();
+        }
+
+    }
+
+    public void ResetCode()
+    {
+        codeEntered.Clear();
     }
 
 }
