@@ -17,4 +17,4 @@ public class Weapon : Item
 }
 
 public enum WeaponType { Key, Usable, Hands, Fuse}
-public enum WeaponStyle { Melee, Primary, Secondary }
+public enum WeaponStyle { Melee, Primary, Secondary}

@@ -78,11 +78,8 @@ public class PlayerInteract : MonoBehaviour
             
             Weapon newItem = hit.transform.GetComponent<ItemObject>().item as Weapon;
 
-           
-
             if (inventory.hasItemInList(newItem))
             {
-                
                 newItem.magazineSize += 1;
 
                 if(equipManager.currentWeapon == newItem)
@@ -112,7 +109,6 @@ public class PlayerInteract : MonoBehaviour
             luz2.SetActive(true);
             luz3.SetActive(true);
             
-
             puzzle1Solved = true;
             Destroy(unlockDoor);
             Destroy(fusiblesParent);
@@ -120,12 +116,8 @@ public class PlayerInteract : MonoBehaviour
 
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, lightPanel) && puzzle1Solved == true)
         {
-            
             hit.collider.gameObject.GetComponent<LightRoomManager>().LightsInteract();
-            
-
         }
-
 
         //TODO: EMPROLIJAR CODE DE PUERTAS
         //Door 1
