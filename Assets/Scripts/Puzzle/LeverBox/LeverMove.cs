@@ -12,8 +12,12 @@ public class LeverMove : MonoBehaviour
     public float moveDuration = 1f;
     public float moveDistance = 1f;
 
+    public float[] leverPositions;
+    Vector3 initialPosition;
+
     void Start()
     {
+        initialPosition = transform.position;
         coroutineAllowed = true;
         numberShown = 1;
     }
@@ -35,10 +39,9 @@ public class LeverMove : MonoBehaviour
             yield return StartCoroutine(MoveLeverDown());
             numberShown++;
         }
-        else if(numberShown != 1) 
+        else if(numberShown >= leverPositions.Length) 
         {
-            yield return StartCoroutine(MoveLeverUp());
-            numberShown--;
+            ResetLever();
         }
 
         coroutineAllowed = true;
@@ -81,32 +84,15 @@ public class LeverMove : MonoBehaviour
 
         transform.position = targetPosition;
     }
+
+    private void ResetLever()
+    {
+        numberShown = 1;
+        transform.position = initialPosition;
+    }
 }
 
-    //private IEnumerator LeverMoveF()
-    //{
-
-    //    coroutineAllowed = false;
-
-    //    for (int i = 0; i <= 5; i++)
-    //    {
-    //        transform.TransformVector(0f, -3f, 0f);
-    //        yield return new WaitForSeconds(0.01f);
-    //    }
-
-
-
-    //    coroutineAllowed = true;
-    //    numberShown += 1;
-
-    //    if (numberShown > 4)
-    //    {
-    //        numberShown = 1;
-    //    }
-
-    //    Rotated(name, numberShown);
-    //}
-
+  
 
 
 
