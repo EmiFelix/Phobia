@@ -190,8 +190,8 @@ MonoBehaviour:
   gravity: -9.8
   jumpHeight: 3
   groundCheck: {fileID: 2172398419174303653}
-  graundDistance: 0.3
-  groundMasck:
+  groundDistance: 0.3
+  groundMask:
     serializedVersion: 2
     m_Bits: 0
   audioSource: {fileID: 0}
@@ -288,9 +288,13 @@ MonoBehaviour:
   triggerPrefab: {fileID: 0}
   ghostSpawn: {fileID: 0}
   triggerSpawn: {fileID: 0}
+  triggerSound:
+    serializedVersion: 2
+    m_Bits: 0
   enemySpawned: 0
   ghostPositions: []
   triggerPositions: []
+  jumpScare: {fileID: 0}
 --- !u!114 &2172398419416382725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +457,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2172398418532618058}
+  - {fileID: 8038612982952707266}
   m_Father: {fileID: 2172398420271182973}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -569,3 +574,34 @@ MonoBehaviour:
   Amount: 0.005
   Frequency: 14
   Smooth: 12
+--- !u!1 &5312324287402736786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8038612982952707266}
+  m_Layer: 16
+  m_Name: FormContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8038612982952707266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5312324287402736786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2172398419794181812}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
