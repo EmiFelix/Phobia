@@ -4,43 +4,21 @@ using UnityEngine;
 
 public class PianoControl : MonoBehaviour
 {
-    private int[] result, correctCombination;
-    public Animator TapaCaja;
-    private AudioSource audioSource;
+    public string[] correctCode = { "Do", "Re", "Mi", "Fa" };
+    private string[] codeEntered = new string[4];
 
-    private void Start()
+    private void Update()
     {
-        result = new int[] { 0, 0, 0 };
-        correctCombination = new int[] { 1, 2, 3 };
-        RotateWheel.Rotated += CheckResults;
-        audioSource = GetComponent<AudioSource>();
-    }
-
-    private void CheckResults(string keyName, int number)
-    {
-        switch (keyName)
+        //Verificar si se ingresó el código correcto
+        if (codeEntered.SequenceEqual(correctCode))
         {
-            case "TeclaB1":
-                result[0] = number;
-                break;
-            case "TeclaB2":
-                result[1] = number;
-                break;
-            case "TeclaB3":
-                result[2] = number;
-                break;
-        }
-
-        if (result[0] == correctCombination[0] && result[1] == correctCombination[1] && result[2] == correctCombination[2])
-        {
-            Debug.Log("Opened hehe");
-            audioSource.Play();
-            TapaCaja.SetBool("Open", true);
+            OpenDoor();
         }
     }
 
-    private void OnDestroy()
+    private void OpenDoor()
     {
-        RotateWheel.Rotated -= CheckResults;
+        Debug.Log("Opened hehe");
     }
+
 }
