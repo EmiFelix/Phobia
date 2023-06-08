@@ -8,7 +8,6 @@ TagManager:
   - Enemy
   - GhostHitBox
   - Weapon
-  - drag
   layers:
   - Default
   - TransparentFX
