@@ -28,4 +28,8 @@ public class PianoKey : MonoBehaviour
         }
     }
 
+    private void OnMouseUp()
+    {
+        audioSource.Stop();
+    }
 }

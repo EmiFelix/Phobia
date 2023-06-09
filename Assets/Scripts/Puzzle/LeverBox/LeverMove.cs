@@ -12,7 +12,7 @@ public class LeverMove : MonoBehaviour
     public float moveDuration = 1f;
     public float moveDistance = 1f;
 
-    private float[] leverPositions;
+    public float[] leverPositions;
     Vector3 initialPosition;
 
     void Start()
@@ -39,12 +39,13 @@ public class LeverMove : MonoBehaviour
             yield return StartCoroutine(MoveLeverDown());
             numberShown++;
         }
-        else if (numberShown >= leverPositions.Length)
+        else if(numberShown >= leverPositions.Length) 
         {
             ResetLever();
-
         }
+
         coroutineAllowed = true;
+
         Rotated(name, numberShown);
     }
 
