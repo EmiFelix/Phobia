@@ -8,6 +8,8 @@ public class LeverControl : MonoBehaviour
     public Animator CajonLever;
     private AudioSource audioSource;
 
+    private bool isPuzzleCompleted = false;
+
     private void Start()
     {
         result = new int[] { 1, 1, 1, 1 };
@@ -18,6 +20,9 @@ public class LeverControl : MonoBehaviour
 
     private void CheckResults(string leverName, int number)
     {
+
+        if (isPuzzleCompleted) return;
+
         switch (leverName)
         {
             case "Lever1":
@@ -38,6 +43,7 @@ public class LeverControl : MonoBehaviour
         {
             audioSource.Play();
             CajonLever.SetBool("Open", true);
+            isPuzzleCompleted = true;
         }
     }
 

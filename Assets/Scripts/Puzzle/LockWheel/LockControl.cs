@@ -8,6 +8,8 @@ public class LockControl : MonoBehaviour
     public Animator TapaCaja;
     private AudioSource audioSource;
 
+    private bool isPuzzleCompleted = false;
+
     private void Start()
     {
         result = new int[] { 6, 6, 6 };
@@ -18,6 +20,9 @@ public class LockControl : MonoBehaviour
 
     private void CheckResults(string wheelName, int number)
     {
+
+        if (isPuzzleCompleted) return;
+
         switch (wheelName)
         {
             case "LockWheel1":
@@ -33,9 +38,9 @@ public class LockControl : MonoBehaviour
 
         if (result[0] == correctCombination[0] && result[1] == correctCombination[1] && result[2] == correctCombination[2])
         {
-            Debug.Log("Opened hehe");
             audioSource.Play();
-            TapaCaja.SetBool("Open", true);          
+            TapaCaja.SetBool("Open", true);
+            isPuzzleCompleted = true;
         }
     }
 
