@@ -8,10 +8,7 @@ public class PianoControl : MonoBehaviour
     public List<string> correctCode = new List<string>{};
     public List<string> codeEntered = new List<string>();
 
-    //public PianoKey button1;
-    //public PianoKey button2;
-    //public PianoKey button3;
-    //public PianoKey button4;
+    private bool codeCompleted = false;
 
     public Animator openedDrawer;
     public AudioSource audioSource;
@@ -19,10 +16,8 @@ public class PianoControl : MonoBehaviour
     private void CorrectCodeEntered()
     {
         if(SameLists(codeEntered, correctCode))
-        {
-            Debug.Log("ahoda zi");
-            OpenDoor();
- 
+        {         
+            OpenDoor(); 
         }
         else
         {
@@ -49,14 +44,19 @@ public class PianoControl : MonoBehaviour
     }
 
     private void OpenDoor()
-    {
-        Debug.Log("Opened hehe");
+    {       
         audioSource.Play();
         openedDrawer.SetBool("Open", true);
     }
 
     public void AddNote(string noteValue)
     {
+
+        if (codeCompleted)
+        {
+            return;
+        }
+
         if (correctCode.Contains(noteValue))
         {
             Debug.Log("nota correcta");
@@ -64,8 +64,7 @@ public class PianoControl : MonoBehaviour
         CorrectCodeEntered();
         }
         else
-        {
-            Debug.Log("Reset codigo");
+        {            
             codeEntered.Clear();
         }
 
