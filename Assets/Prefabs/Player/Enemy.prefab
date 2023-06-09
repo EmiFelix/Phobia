@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 4256651553216101835}
+  bodoque: {fileID: 1448165357361154510}
   player: {fileID: 2172398419416382847, guid: 497a951106ff73143ba21e2c797692a0, type: 3}
   whatIsGround:
     serializedVersion: 2
@@ -79,11 +80,14 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 65536
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 394369
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
   alreadyAttacked: 0
-  sightRange: 8
+  sightRange: 4
   attackRange: 3
   playerInSightRange: 1
   playerInAttackRange: 0
@@ -208,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6508432625383629043}
   - component: {fileID: 749423170923370025}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HitBox
   m_TagString: GhostHitBox
   m_Icon: {fileID: 0}

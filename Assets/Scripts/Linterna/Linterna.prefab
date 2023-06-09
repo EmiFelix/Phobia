@@ -95,6 +95,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   enemy: {fileID: 638622479920515778, guid: a980ef0b5e4119d4e87b8655e8b07696, type: 3}
   playerStats: {fileID: 0}
+  flashLightSO: {fileID: 11400000, guid: 26806007d80162749a75b12839f1f19d, type: 2}
 --- !u!114 &-4598553498620450252
 MonoBehaviour:
   m_ObjectHideFlags: 0

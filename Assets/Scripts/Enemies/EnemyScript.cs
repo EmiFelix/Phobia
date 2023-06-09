@@ -7,10 +7,12 @@ using UnityEngine.AI;
 public class EnemyScript : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public Transform bodoque;
 
     public Transform player;
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsGround, whatIsPlayer, obstacleLayer;
+
 
     public Vector3 walkPoint;
     bool WalkPointSet;
@@ -50,8 +52,24 @@ public class EnemyScript : MonoBehaviour
 
     public void Update()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        RaycastHit hit;
+        if (Physics.Raycast(bodoque.position, player.transform.position, out hit, sightRange, whatIsPlayer))
+        {
+            Debug.Log(1);
+            float magnitude = (hit.point - bodoque.position).magnitude;
+            if (!Physics.Raycast(bodoque.position, player.transform.position, magnitude * 0.9f, obstacleLayer))
+            {
+                Debug.Log(2);
+                playerInSightRange = true;
+            }
+            else playerInSightRange = false;
+
+        }
+        
+
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) {

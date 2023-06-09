@@ -34,7 +34,7 @@ public class PlayerStats : CharacterStats
         ghostPositions.Add(ghostSpawn.position = new Vector3(21, 11.5f, 38));
         ghostPositions.Add(ghostSpawn.position = new Vector3(14, 11.5f, 40));
         ghostPositions.Add(ghostSpawn.position = new Vector3(1.5f, 11.5f, 45));
-        ghostPositions.Add(ghostSpawn.position = new Vector3(4.3f, 11.5f, 54.5f));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(-6.896f, 11.5f, 50.487f));
         ghostPositions.Add(ghostSpawn.position = new Vector3(-6, 11.5f, 68));
         ghostPositions.Add(ghostSpawn.position = new Vector3(11, 11.5f, 57.5f));
 
@@ -90,8 +90,8 @@ public class PlayerStats : CharacterStats
         if (!isPoisoned)
         {
             isPoisoned = true;             
-            StartCoroutine(PoisonCoroutine());            
-        }       
+            StartCoroutine(PoisonCoroutine());
+        }
     }
 
     private IEnumerator PoisonCoroutine()
@@ -99,7 +99,7 @@ public class PlayerStats : CharacterStats
         while (isPoisoned)
         {
             // Wait for the specified interval before taking damage
-            yield return new WaitForSeconds(poisonInterval);            
+            yield return new WaitForSeconds(poisonInterval);
             // Take 1 damage
             takeDMG(1);
            

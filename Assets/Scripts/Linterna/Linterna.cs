@@ -16,6 +16,10 @@ public class Linterna : MonoBehaviour
 
     [SerializeField] private PlayerStats playerStats;
 
+    [SerializeField] private Weapon flashLightSO;
+
+    private float timer;
+
     private void Start()
     {
         playerStats = FindObjectOfType<PlayerStats>();
@@ -23,7 +27,7 @@ public class Linterna : MonoBehaviour
         cam = Camera.main;
     }
 
-    private int rango = 8;
+    private int range = 8;
 
     void Update()
     {
@@ -34,22 +38,10 @@ public class Linterna : MonoBehaviour
 
         if (luzLinterna.enabled)
         {
-            playerHUD.ReduceMagazine();
-        }
-    }
-
-    private void LightFunc()
-    {
-        activeLight = !activeLight;
-        if (activeLight == true)
-        {
-            luzLinterna.enabled = true;
-
-            
             RaycastHit hit;
 
 
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, rango))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
             {
 
                 if (hit.collider.tag == "Enemy" || hit.collider.tag == "GhostHitBox")
@@ -60,6 +52,27 @@ public class Linterna : MonoBehaviour
 
                 }
             }
+
+            playerHUD.ReduceMagazine();
+            timer += Time.deltaTime;
+            if(timer > 1)
+            {
+                timer = 0;
+                flashLightSO.magazineSize -= 1;
+                
+            }
+            
+        }
+    }
+
+    private void LightFunc()
+    {
+        activeLight = !activeLight;
+        if (activeLight == true)
+        {
+            luzLinterna.enabled = true;
+
+
         }
         else if (activeLight == false)
         {
