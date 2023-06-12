@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -372,10 +372,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 625805875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e462977b62b9975499fd94f2b84e7250, type: 3}
+  m_Script: {fileID: 11500000, guid: ecdb2097a35b8144193f8f6d0ff73f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
+  index: 0
 --- !u!114 &625805877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,9 +723,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 625805875}
+      - m_Target: {fileID: 625805876}
         m_TargetAssemblyTypeName: SceneNav, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ChangeScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 1342955383}
   - component: {fileID: 1342955382}
   m_Layer: 5
-  m_Name: PHOBIA
+  m_Name: CREDITTS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -625.3, y: -164}
+  m_AnchoredPosition: {x: -686.05, y: -257.75}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1342955382
@@ -831,7 +831,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PHOBIA
+  m_text: CREDITS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5b64a138eff3d7c4298d6937fff1cfbe, type: 2}
   m_sharedMaterial: {fileID: -373581713409475068, guid: 5b64a138eff3d7c4298d6937fff1cfbe, type: 2}
@@ -858,13 +858,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
