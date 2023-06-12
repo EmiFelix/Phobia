@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
     private bool isPaused = false;
-
+    public CamMovement camMovement; 
+    public Slider sensitivitySlider;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -43,6 +45,11 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void AdjustSensitivity(float newSpeed)
+    {
+        camMovement.AdjustSensitivity(newSpeed);
     }
 
     //public void Reset()

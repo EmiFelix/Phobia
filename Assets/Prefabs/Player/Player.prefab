@@ -225,6 +225,9 @@ MonoBehaviour:
   pickupLayer:
     serializedVersion: 2
     m_Bits: 64
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
   door:
     serializedVersion: 2
     m_Bits: 128
@@ -260,12 +263,9 @@ MonoBehaviour:
   fusiblesParent: {fileID: 0}
   unlockDoor: {fileID: 0}
   Door: {fileID: 0}
-  Door2: {fileID: 0}
-  Door3: {fileID: 0}
-  Door4: {fileID: 0}
-  Door5: {fileID: 0}
-  Door6: {fileID: 0}
   audioSource: {fileID: 0}
+  Fusible1: {fileID: 0}
+  Fusible2: {fileID: 0}
 --- !u!114 &2172398419416382724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,6 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 200
   playerbody: {fileID: 2172398419416382847}
+  sliderMouse: {fileID: 0}
 --- !u!1 &2172398420271182972
 GameObject:
   m_ObjectHideFlags: 0
