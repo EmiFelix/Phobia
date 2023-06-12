@@ -40,8 +40,8 @@ public class PlayerInteract : MonoBehaviour
 
     public AudioSource audioSource;
 
-    public GameObject Fusible1;
-    public GameObject Fusible2;
+    public GameObject Fusibles;
+    
 
     private void Start()
     {
@@ -116,12 +116,9 @@ public class PlayerInteract : MonoBehaviour
 
 
             puzzle1Solved = true;
-            Fusible1.SetActive(true);
-            Fusible2.SetActive(true);
-            Animator animator = Fusible1.GetComponent<Animator>();
-            Animator animator2 = Fusible2.GetComponent<Animator>();
+            Fusibles.SetActive(true);
+            Animator animator = Fusibles.GetComponent<Animator>();           
             animator.SetBool("Open", true);
-            animator2.SetBool("Open", true);
             Destroy(unlockDoor);
             Destroy(fusiblesParent);
         }
