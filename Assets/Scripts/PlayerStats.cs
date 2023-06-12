@@ -30,7 +30,7 @@ public class PlayerStats : CharacterStats
         InitVariables();
 
         //Enemy Spawns
-        ghostPositions.Add(ghostSpawn.position = new Vector3(21, 11.5f, 38));
+        ghostPositions.Add(ghostSpawn.position = new Vector3(24, 11.5f, 33));
         ghostPositions.Add(ghostSpawn.position = new Vector3(14, 11.5f, 40));
         ghostPositions.Add(ghostSpawn.position = new Vector3(1.5f, 11.5f, 45));
         ghostPositions.Add(ghostSpawn.position = new Vector3(-6.896f, 11.5f, 50.487f));
@@ -42,7 +42,7 @@ public class PlayerStats : CharacterStats
         triggerPositions.Add(triggerSpawn.position = new Vector3(11, 11.5f, 45));
         triggerPositions.Add(triggerSpawn.position = new Vector3(3.5f, 11.5f, 39));
         triggerPositions.Add(triggerSpawn.position = new Vector3(-4, 11.5f, 53));
-        triggerPositions.Add(triggerSpawn.position = new Vector3(-0.5f, 11.5f, 62));
+        triggerPositions.Add(triggerSpawn.position = new Vector3(1.5f, 11.5f, 57));
         triggerPositions.Add(triggerSpawn.position = new Vector3(10, 11.5f, 63));
 
     }
