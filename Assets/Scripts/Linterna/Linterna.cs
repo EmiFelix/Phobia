@@ -56,12 +56,17 @@ public class Linterna : MonoBehaviour
 
             playerHUD.ReduceMagazine();
             timer += Time.deltaTime;
-            if(timer > 1 && flashLightSO.magazineSize >= 0)
+            if(timer > 1)
             {
                 timer = 0;
                 flashLightSO.magazineSize -= 1;
                 SpendBattery battery = new SpendBattery();
                 battery.spendBattery(flashLightSO.magazineSize, luzLinterna);
+
+                if(flashLightSO.magazineSize <= 0)
+                {
+                    flashLightSO.magazineSize = 0;
+                }
             }
         }
     }
