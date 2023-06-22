@@ -13,7 +13,7 @@ public class WheelFinalBox : MonoBehaviour
     void Start()
     {
         coroutineAllowed = true;
-        numberShown = 6;
+        numberShown = 7;
     }
 
     private void OnMouseDown()

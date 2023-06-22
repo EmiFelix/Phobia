@@ -6,16 +6,16 @@ public class FinalBoxControl : MonoBehaviour
 {
     private int[] result, correctCombination;
     public Animator TapaCofre;
-    //private AudioSource audioSource;
+    public AudioSource audioSource;
+    public GameObject padlock;
 
     private bool isPuzzleCompleted = false;
 
     private void Start()
     {
-        result = new int[] { 6, 6, 6 };
+        result = new int[] { 7, 7, 7 };
         correctCombination = new int[] { 7, 4, 2 };
         WheelFinalBox.Rotated += CheckResults;
-        //audioSource = GetComponent<AudioSource>();
     }
 
     private void CheckResults(string wheelName, int number)
@@ -38,10 +38,10 @@ public class FinalBoxControl : MonoBehaviour
 
         if (result[0] == correctCombination[0] && result[1] == correctCombination[1] && result[2] == correctCombination[2])
         {
-            Debug.Log("Funciona");
-            //audioSource.Play();
+            audioSource.Play();
             TapaCofre.SetBool("Open", true);
             isPuzzleCompleted = true;
+            Destroy(padlock);
         }
     }
 
