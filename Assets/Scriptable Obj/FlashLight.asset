@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Don't point it to your eyes!
   icon: {fileID: 21300000, guid: 33242875e98ef254a8e94935bb1e1ad8, type: 3}
   prefab: {fileID: 4344719243863544886, guid: 644549ae61da7244cb8c5bb1015a3daf, type: 3}
-  magazineSize: 100
+  magazineSize: 0
   magazineCount: 1
   range: 10
   weaponType: 1

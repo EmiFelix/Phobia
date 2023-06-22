@@ -33,7 +33,6 @@ public class PlayerInteract : MonoBehaviour
     private bool puzzle1Solved;
 
     [SerializeField] private GameObject fusiblesParent;
-
     [SerializeField] private GameObject unlockDoor;
 
     public Animator Door;
@@ -41,8 +40,6 @@ public class PlayerInteract : MonoBehaviour
     public AudioSource audioSource;
 
     public GameObject Fusibles;
-    
-
     private void Start()
     {
         GetReferences();
@@ -101,8 +98,6 @@ public class PlayerInteract : MonoBehaviour
 
                 Destroy(hit.transform.gameObject);
             }
-
-
         }
 
 
@@ -152,7 +147,6 @@ public class PlayerInteract : MonoBehaviour
     private void GetReferences()
     {
         cam = Camera.main;
-
         inventory = GetComponent<Inventory>();
     }
 }
