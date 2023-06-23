@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class FinalBoxControl : MonoBehaviour
 {
@@ -8,8 +8,15 @@ public class FinalBoxControl : MonoBehaviour
     public Animator TapaCofre;
     public AudioSource audioSource;
     public GameObject padlock;
+    public Camera mainCamera;
+    public Animator cameraAnim;
+    public float delayBeforeFade = 2f; // Tiempo de espera antes de activar el fade
 
     private bool isPuzzleCompleted = false;
+
+
+    public CameraFade cameraFade;
+    public GameObject fadeCanvas;
 
     private void Start()
     {
@@ -42,13 +49,26 @@ public class FinalBoxControl : MonoBehaviour
             TapaCofre.SetBool("Open", true);
             isPuzzleCompleted = true;
             Destroy(padlock);
+            ActivateCameraAnimation();
+            Invoke("StartFade", delayBeforeFade);
+
         }
+    }
+
+    private void StartFade()
+    {
+        fadeCanvas.SetActive(true);
+        cameraFade.StartFade();
+    }
+
+    private void ActivateCameraAnimation()
+    {
+        mainCamera.enabled = false;
+        cameraAnim.SetBool("Play", true);
     }
 
     private void OnDestroy()
     {
         WheelFinalBox.Rotated -= CheckResults;
     }
-
-
 }
