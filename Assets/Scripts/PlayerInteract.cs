@@ -43,6 +43,9 @@ public class PlayerInteract : MonoBehaviour
 
     public GameObject Fusibles;
 
+    public GameObject pressE;
+    public LayerMask interactables;
+
     private void Start()
     {
         GetReferences();
@@ -52,13 +55,14 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, pickupRange, pickupLayer))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, pickupRange, interactables))
         {
-            //TODO: Prender UI
+
+            pressE.SetActive(true);
         }
         else
         {
-            //TODO: Apagar UI
+            pressE.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
