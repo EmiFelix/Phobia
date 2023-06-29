@@ -40,6 +40,7 @@ public class PlayerInteract : MonoBehaviour
     public AudioSource audioSource;
 
     public GameObject Fusibles;
+
     private void Start()
     {
         GetReferences();
@@ -131,12 +132,16 @@ public class PlayerInteract : MonoBehaviour
 
             if (!Physics.Raycast(cam.transform.position, cam.transform.forward, magnitude * 0.9f, obstacleLayer))
             {
-                Animator anim = hit.collider.GetComponentInParent<Animator>();
-                if (anim == null) return;
-                if (hit.collider.GetComponentInParent<Animator>().GetBool("Open")) return;
-                hit.collider.GetComponentInParent<Animator>().SetBool("Open", true);
-                audioSource.Play();
-                equipManager.DestroyWeapon();
+                door actualdoor = hit.collider.GetComponentInParent<door>();
+
+                if(actualdoor != null && equipManager.currentWeapon.id == actualdoor.id && !actualdoor.isOpen)
+                {
+                    actualdoor.animator.SetBool("Open", true);
+                    audioSource.Play();
+                    equipManager.DestroyWeapon();
+                    actualdoor.isOpen = true;
+                }
+               
             }
 
         }

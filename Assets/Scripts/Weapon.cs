@@ -12,7 +12,7 @@ public class Weapon : Item
     public float range;
     public WeaponType weaponType;
     public WeaponStyle weaponStyle;
-
+    public int id;
     public int magazineSizeINITIAL;
 }
 
