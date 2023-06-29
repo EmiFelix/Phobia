@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class EnemyScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour, IEnemy
 {
+    [SerializeField] private float _hp;
+
     public NavMeshAgent agent;
     public Transform bodoque;
 
@@ -156,6 +158,16 @@ public class EnemyScript : MonoBehaviour
         alreadyAttacked = false;
         isMoving = true;
         agent.isStopped = false;
+    }
+
+    public void LoseHP(float damage)
+    {
+        _hp -= damage;
+
+        if (_hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

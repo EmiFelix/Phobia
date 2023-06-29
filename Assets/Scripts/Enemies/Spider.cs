@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class Spider : MonoBehaviour
+public class Spider : MonoBehaviour, IEnemy
 {
+    [SerializeField] private float _hp;
+
+
     public NavMeshAgent agent;
     public Transform bodoque;
 
@@ -163,5 +166,15 @@ public class Spider : MonoBehaviour
         alreadyAttacked = false;
         isMoving = true;
         agent.isStopped = false;
+    }
+
+    public void LoseHP(float damage)
+    {
+        _hp -= damage;
+
+        if(_hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

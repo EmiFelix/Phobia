@@ -47,8 +47,13 @@ public class Linterna : MonoBehaviour
 
                 if (hit.collider.tag == "Enemy" || hit.collider.tag == "GhostHitBox")
                 {
+                    var spider = hit.collider.GetComponent<IEnemy>();
+                    if (spider != null)
+                    {
+                        spider.LoseHP(10);
+                    }
+
                     playerStats.enemySpawned = false;
-                    Destroy(hit.transform.gameObject);
                     playerStats.StopPoison();
 
                 }

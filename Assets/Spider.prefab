@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8cbfe466fc3f5344a272b3b9e99c3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hp: 700
   agent: {fileID: 0}
   bodoque: {fileID: 6843226937067572018}
   player: {fileID: 0}
