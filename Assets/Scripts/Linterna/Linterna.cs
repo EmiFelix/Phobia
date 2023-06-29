@@ -20,6 +20,8 @@ public class Linterna : MonoBehaviour
 
     private float timer;
 
+    private SpendBattery spendBattery = new SpendBattery(); 
+
     private void Start()
     {
         playerStats = FindObjectOfType<PlayerStats>();
@@ -32,7 +34,7 @@ public class Linterna : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && spendBattery.HasBattery(flashLightSO.magazineSize))
         {
             LightFunc();
         }
@@ -65,13 +67,11 @@ public class Linterna : MonoBehaviour
             {
                 timer = 0;
                 flashLightSO.magazineSize -= 1;
-                SpendBattery battery = new SpendBattery();
-                battery.spendBattery(flashLightSO.magazineSize, luzLinterna);
 
-                if(flashLightSO.magazineSize <= 0)
-                {
-                    flashLightSO.magazineSize = 0;
-                }
+                
+                spendBattery.spendBattery(flashLightSO.magazineSize, luzLinterna);
+
+                
             }
         }
     }
@@ -94,5 +94,14 @@ public struct SpendBattery
     public void spendBattery(int currBattery, Light light)
     {
         if (currBattery <= 0) light.enabled = false;
+    }
+
+    public bool HasBattery(int currBattery)
+    {
+        if (currBattery > 0)
+        {
+            return true;
+        }
+        return false;
     }
 }
