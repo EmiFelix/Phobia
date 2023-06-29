@@ -8,13 +8,9 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private LayerMask pickupLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask door;
-    [SerializeField] private LayerMask door2;
-    [SerializeField] private LayerMask door3;
-    [SerializeField] private LayerMask door4;
-    [SerializeField] private LayerMask door5;
-    [SerializeField] private LayerMask door6;
     [SerializeField] private LayerMask lightBox;
     [SerializeField] private LayerMask lightPanel;
+    [SerializeField] private LayerMask battery;
     [SerializeField] private int minRequiredToInteract;
 
     private Camera cam;
@@ -36,6 +32,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject fusiblesParent;
     [SerializeField] private GameObject unlockDoor;
     [SerializeField] private GameObject spiders;
+    [SerializeField] private Weapon flashLightSO;
 
     public Animator Door;
 
@@ -46,11 +43,15 @@ public class PlayerInteract : MonoBehaviour
     public GameObject pressE;
     public LayerMask interactables;
 
+    public WeaponUI weaponui;
+
     private void Start()
     {
         GetReferences();
         minRequiredToInteract = 6;
         puzzle1Solved = false;
+        
+
     }
 
     private void Update()
@@ -151,6 +152,25 @@ public class PlayerInteract : MonoBehaviour
                
             }
 
+        }
+        else if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, battery))
+        {
+            if(flashLightSO.magazineSize < 100)
+            {
+                flashLightSO.magazineSize += 10;
+                
+                Destroy(hit.collider.gameObject);
+
+                
+                if(flashLightSO.magazineSize > 100)
+                {
+                    flashLightSO.magazineSize = 100;
+                    
+                }
+
+                weaponui.updateMagazineInfo(flashLightSO.magazineSize);
+            }
+            
         }
     }
 

@@ -97,7 +97,7 @@ public class Spider : MonoBehaviour, IEnemy
             _zAxis = 0;
         }
 
-        AnimatorManager(_xAxis, _zAxis);
+        //AnimatorManager(_xAxis, _zAxis);
     }
 
     private void Patroling()

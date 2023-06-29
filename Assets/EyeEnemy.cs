@@ -25,7 +25,7 @@ public class EyeEnemy : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    public Animator _Anim;
+    //public Animator _Anim;
 
     string _xAxisName = "X Axis";
     string _zAxisName = "Z Axis";
@@ -37,6 +37,10 @@ public class EyeEnemy : MonoBehaviour
 
     public AudioSource playerAttacked;
 
+    private bool isDashing = false;
+    public float dashSpeed = 10f;
+    public float dashDuration = 0.5f;
+
     public void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -47,8 +51,8 @@ public class EyeEnemy : MonoBehaviour
 
     void AnimatorManager(float xAxis, float zAxis)
     {
-        _Anim.SetFloat(_xAxisName, xAxis);
-        _Anim.SetFloat(_zAxisName, zAxis);
+        //_Anim.SetFloat(_xAxisName, xAxis);
+        //_Anim.SetFloat(_zAxisName, zAxis);
     }
 
     public void Update()
@@ -67,22 +71,22 @@ public class EyeEnemy : MonoBehaviour
 
         }
 
-
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-
-
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (!playerInSightRange && !playerInAttackRange)
+        {
+            if (!isDashing) // Only patrol when not dashing
+                Patroling();
+        }
         if (playerInSightRange && !playerInAttackRange)
         {
             ChasePlayer();
-            playerAttacked.Play();
+            //playerAttacked.Play();
         }
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
-
+        if (playerInSightRange && playerInAttackRange)
+            AttackPlayer();
 
         Vector3 dir = transform.forward * actualObj.z + transform.right * actualObj.x;
-
 
         if (isMoving)
         {
@@ -95,13 +99,13 @@ public class EyeEnemy : MonoBehaviour
             _zAxis = 0;
         }
 
-        AnimatorManager(_xAxis, _zAxis);
+        //AnimatorManager(_xAxis, _zAxis);
     }
 
     private void Patroling()
     {
-        if (!WalkPointSet) SearchWalkPoint();
-
+        if (!WalkPointSet)
+            SearchWalkPoint();
 
         if (WalkPointSet)
         {
@@ -115,7 +119,6 @@ public class EyeEnemy : MonoBehaviour
         {
             WalkPointSet = false;
         }
-
     }
 
     private void SearchWalkPoint()
@@ -136,11 +139,15 @@ public class EyeEnemy : MonoBehaviour
         agent.SetDestination(player.position);
         actualObj = player.position;
     }
+
     private void AttackPlayer()
     {
+        
         agent.SetDestination(transform.position);
         actualObj = player.position;
         isMoving = false;
+
+        StartCoroutine(DashToPlayer());
 
         Vector3 lookAt = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(lookAt);
@@ -149,8 +156,32 @@ public class EyeEnemy : MonoBehaviour
         {
             agent.isStopped = true;
 
+            
+            
+
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+    }
+
+    private IEnumerator DashToPlayer()
+    {
+        isDashing = true;
+
+        
+        Vector3 dashDirection = (player.position - transform.position).normalized;
+
+        
+        float dashTimer = 0f;
+        while (dashTimer < dashDuration)
+        {
+            agent.velocity = dashDirection * dashSpeed;
+            dashTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        
+        agent.velocity = Vector3.zero;
+        isDashing = false;
     }
 
     private void ResetAttack()

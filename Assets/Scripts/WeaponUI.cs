@@ -10,8 +10,10 @@ public class WeaponUI : MonoBehaviour
     [SerializeField] private Text quantityCountText;
     public float numberOfQuantity;
 
+
     public void UpdateInfo(Sprite weaponIcon, int quantity, int quantityCount)
     {
+        
         icon.sprite = weaponIcon;
         int quantityCountAmount = quantity * quantityCount;
         quantityCountText.text = quantityCount.ToString();
@@ -22,7 +24,7 @@ public class WeaponUI : MonoBehaviour
 
     public void updateMagazineInfo(float _quantity)
     {
-
+        
         numberOfQuantity = _quantity;
         quantityText.text = numberOfQuantity.ToString("F0");
 
