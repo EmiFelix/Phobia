@@ -32,8 +32,10 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject lever;
     private bool puzzle1Solved;
 
+
     [SerializeField] private GameObject fusiblesParent;
     [SerializeField] private GameObject unlockDoor;
+    [SerializeField] private GameObject spiders;
 
     public Animator Door;
 
@@ -116,6 +118,7 @@ public class PlayerInteract : MonoBehaviour
             Animator animator = Fusibles.GetComponent<Animator>();           
             animator.SetBool("Open", true);
             Destroy(unlockDoor);
+            spiders.SetActive(true);
             Destroy(fusiblesParent);
         }
 

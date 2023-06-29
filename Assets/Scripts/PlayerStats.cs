@@ -76,6 +76,11 @@ public class PlayerStats : CharacterStats
         {
             OnPoisoned(); 
         }
+
+        if(collider.transform.tag == "Spit")
+        {
+            takeDMG(5);
+        }
     }
 
     private bool isPoisoned = false;
