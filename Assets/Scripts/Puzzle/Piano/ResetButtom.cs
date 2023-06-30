@@ -6,15 +6,31 @@ public class ResetButtom : MonoBehaviour
 {
     private PianoControl pianoController;
     public AudioSource audioSource;
+    private bool canPlaySound = true;
+    private bool isPlaying = false;
+
     void Start()
     {
         pianoController = FindObjectOfType<PianoControl>();
     }
 
-    // Update is called once per frame
     private void OnMouseDown()
     {
-        audioSource.Play();
-        pianoController.ResetCode();
+
+        if (canPlaySound && isPlaying == false)
+        {
+            audioSource.Play();
+            isPlaying = true;
+            canPlaySound = false;
+            pianoController.ResetCode();
+        }
+    }
+
+    private void Update()
+    {
+        if (!isPlaying && !audioSource.isPlaying)
+        {
+            canPlaySound = true;
+        }
     }
 }
