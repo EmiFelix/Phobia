@@ -8,6 +8,7 @@ public class LucesKey : MonoBehaviour
     public string luzValue;
     public AudioSource audioSource;
     public GameObject luz;
+    public float duration = 1f;
 
 
     private void Start()
@@ -23,11 +24,30 @@ public class LucesKey : MonoBehaviour
         if (luzValue == lucesPuzzle.correctCode[lucesPuzzle.codeEntered.Count])
         {
             lucesPuzzle.AddLight(luzValue);
+
+
+            if (lucesPuzzle.codeEntered.Count == lucesPuzzle.correctCode.Count)
+            {
+                
+            }
+            else
+            {
+                StartCoroutine(TurnOffLights());
+            }
         }
         else
         {
             lucesPuzzle.ResetCode();
+            StartCoroutine(TurnOffLights());
+
         }
     }
+
+    private IEnumerator TurnOffLights()
+    {
+        yield return new WaitForSeconds(duration);
+        luz.SetActive(false);
+    }
+
 
 }

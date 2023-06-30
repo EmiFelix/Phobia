@@ -10,10 +10,8 @@ public class LucesPuzzle : MonoBehaviour
 
     public Animator openedBox;
     public AudioSource audioSource;
-    public GameObject luz;
 
-    private bool codeCompleted = false;
-    private bool isLightOn = false;
+    public bool codeCompleted = false;
 
     private void CorrectCodeEntered()
     {
@@ -21,12 +19,11 @@ public class LucesPuzzle : MonoBehaviour
         {
 
             OpenDoor();
-            KeepLightOn();
+
         }
         else
         {
             Debug.Log("no");
-            TurnOffLight();
         }
     }
 
@@ -52,21 +49,7 @@ public class LucesPuzzle : MonoBehaviour
     {
         audioSource.Play();
         openedBox.SetBool("Open", true);
-    }
 
-    private void KeepLightOn()
-    {
-        if (!isLightOn)
-        {
-            isLightOn = true;
-            InvokeRepeating("TurnOffLiht", 3f, 3f);
-        }
-    }
-
-    private void TurnOffLight()
-    {
-        isLightOn = false;
-        luz.SetActive(false);
     }
 
     public void AddLight(string luzValue)
@@ -97,6 +80,7 @@ public class LucesPuzzle : MonoBehaviour
     public void ResetCode()
     {
         codeEntered.Clear();
-    }
+        codeCompleted = false;
 
+    }
 }
