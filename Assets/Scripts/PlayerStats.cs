@@ -27,6 +27,9 @@ public class PlayerStats : CharacterStats
     [SerializeField] private GameObject extraGhost2;
     [SerializeField] private Transform extraSpawner2;
 
+    [SerializeField] private GameObject extraGhost3;
+    [SerializeField] private Transform extraSpawner3;
+
 
 
 
@@ -127,6 +130,13 @@ public class PlayerStats : CharacterStats
         {
 
             Instantiate(extraGhost2, extraSpawner2.position, extraSpawner2.rotation);
+            Destroy(collider);
+        }
+
+        if (collider.transform.tag == "Extra Trigger 3")
+        {
+
+            Instantiate(extraGhost3, extraSpawner3.position, extraSpawner3.rotation);
             Destroy(collider);
         }
     }
