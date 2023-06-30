@@ -7,6 +7,7 @@ public class CircuitKey : MonoBehaviour
     public CircuitControl circuitControl;
     public int keyValue;
     public AudioSource audioSource;
+    public GameObject luz;
 
 
     private void Start()
@@ -17,6 +18,7 @@ public class CircuitKey : MonoBehaviour
     private void OnMouseDown()
     {
         audioSource.Play();
+        luz.SetActive(true);
 
         if (keyValue == circuitControl.correctCode[circuitControl.codeEntered.Count])
         {
