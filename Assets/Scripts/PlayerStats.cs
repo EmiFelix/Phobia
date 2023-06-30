@@ -42,7 +42,9 @@ public class PlayerStats : CharacterStats
 
     public AudioSource jumpScare;
     public AudioSource muñeca;
-    
+    public AudioSource bicho1;
+    public AudioSource bicho2;
+
 
     private void Start()
     {
@@ -122,14 +124,14 @@ public class PlayerStats : CharacterStats
 
         if (collider.transform.tag == "Extra Trigger")
         {
-
+            bicho1.Play();
             Instantiate(extraGhost1, extraSpawner.position, extraSpawner.rotation);
             Destroy(collider);
         }
 
         if (collider.transform.tag == "Extra Trigger 2")
         {
-
+            bicho2.Play();
             Instantiate(extraGhost2, extraSpawner2.position, extraSpawner2.rotation);
             Destroy(collider);
         }
