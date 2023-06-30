@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : CharacterStats
 {
@@ -55,6 +56,7 @@ public class PlayerStats : CharacterStats
     private void Update()
     {
         mothLose();
+        LoseCondition();
     }
 
     private void GetReferences()
@@ -138,6 +140,14 @@ public class PlayerStats : CharacterStats
         if(_mothTimer.lose == true)
         {
             takeDMG(100);
+        }
+    }
+
+    public void LoseCondition()
+    {
+        if(HP <= 0)
+        {
+            SceneManager.LoadScene("YOU DIED");
         }
     }
 }
