@@ -16,10 +16,10 @@ MonoBehaviour:
   description: Puzzle final
   icon: {fileID: 21300000, guid: 1dd9273629c75a645a07e6fa2f1557fb, type: 3}
   prefab: {fileID: 7512074948350807299, guid: 0e69a472ebe72274d9c3c83f11158f67, type: 3}
-  magazineSize: 4
+  magazineSize: 2
   magazineCount: 9
   range: 4
   weaponType: 4
   weaponStyle: 2
   id: 0
-  magazineSizeINITIAL: 0
+  magazineSizeINITIAL: 1
