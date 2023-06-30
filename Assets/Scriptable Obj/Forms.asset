@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ea3df7d5440a94b8554b73f8b0910c, type: 3}
   m_Name: Forms
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  icon: {fileID: 0}
+  name: 'Formas '
+  description: Puzzle final
+  icon: {fileID: 21300000, guid: ed64f3a17f2ede646be21ed6edc9161a, type: 3}
   prefab: {fileID: 0}
-  magazineSize: 0
-  magazineCount: 0
-  range: 0
-  weaponType: 0
-  weaponStyle: 0
+  magazineSize: 9
+  magazineCount: 9
+  range: 4
+  weaponType: 4
+  weaponStyle: 2
   id: 0
   magazineSizeINITIAL: 0

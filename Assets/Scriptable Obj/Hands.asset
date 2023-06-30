@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hands
   description: Your bare hands!
-  icon: {fileID: 21300000, guid: a42806086c247d24cb7044ef2f1d31e3, type: 3}
+  icon: {fileID: 21300000, guid: 6c6e7dd99dc46ab4d8a9d0fa1c343895, type: 3}
   prefab: {fileID: 5705518893453160193, guid: 60253011f5dd3af43a190d4170123e6d, type: 3}
   magazineSize: 1
   magazineCount: 1
   range: 1
   weaponType: 2
   weaponStyle: 0
+  id: 0
   magazineSizeINITIAL: 1

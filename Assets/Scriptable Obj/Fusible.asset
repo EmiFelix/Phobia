@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fusible
   description: Fusible
-  icon: {fileID: 21300000, guid: 40685941c1361aa4a957b61174bce3f6, type: 3}
+  icon: {fileID: 21300000, guid: b15210b4ffdaccc4f8b0de110308d0cd, type: 3}
   prefab: {fileID: 2485648366888065279, guid: 9ccd2708e0f2178429775618c068ac34, type: 3}
-  magazineSize: 2
+  magazineSize: 1
   magazineCount: 6
   range: 4
   weaponType: 3
   weaponStyle: 2
+  id: 0
   magazineSizeINITIAL: 1
