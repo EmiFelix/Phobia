@@ -42,6 +42,7 @@ public class PlayerInteract : MonoBehaviour
     public Animator Door;
 
     public AudioSource audioSource;
+    public AudioSource fusiblesSound;
 
     public GameObject Fusibles;
 
@@ -130,6 +131,7 @@ public class PlayerInteract : MonoBehaviour
 
             puzzle1Solved = true;
             Fusibles.SetActive(true);
+            fusiblesSound.Play();
             Animator animator = Fusibles.GetComponent<Animator>();
             animator.SetBool("Open", true);
             Destroy(unlockDoor);

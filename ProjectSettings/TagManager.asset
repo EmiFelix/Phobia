@@ -11,6 +11,9 @@ TagManager:
   - Spit
   - Moth
   - HpBox
+  - Extra Trigger
+  - Extra Trigger 2
+  - Extra Trigger 3
   layers:
   - Default
   - TransparentFX

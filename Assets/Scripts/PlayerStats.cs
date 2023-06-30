@@ -20,8 +20,19 @@ public class PlayerStats : CharacterStats
     [SerializeField] private GameObject mothCounter;
     [SerializeField] private mothTimer _mothTimer;
 
-    
-    
+    //
+    [SerializeField] private GameObject extraGhost1;
+    [SerializeField] private Transform extraSpawner;
+
+    [SerializeField] private GameObject extraGhost2;
+    [SerializeField] private Transform extraSpawner2;
+
+    [SerializeField] private GameObject extraGhost3;
+    [SerializeField] private Transform extraSpawner3;
+
+
+
+
     public bool enemySpawned;
 
     public List<Vector3> ghostPositions = new List<Vector3>();
@@ -30,6 +41,7 @@ public class PlayerStats : CharacterStats
     private int counter = 0;
 
     public AudioSource jumpScare;
+    public AudioSource muñeca;
     
 
     private void Start()
@@ -106,6 +118,28 @@ public class PlayerStats : CharacterStats
             
             mothCounter.SetActive(true);
             Destroy(mothTrigger);
+        }
+
+        if (collider.transform.tag == "Extra Trigger")
+        {
+
+            Instantiate(extraGhost1, extraSpawner.position, extraSpawner.rotation);
+            Destroy(collider);
+        }
+
+        if (collider.transform.tag == "Extra Trigger 2")
+        {
+
+            Instantiate(extraGhost2, extraSpawner2.position, extraSpawner2.rotation);
+            Destroy(collider);
+        }
+
+        if (collider.transform.tag == "Extra Trigger 3")
+        {
+            muñeca.Play();
+
+            Instantiate(extraGhost3, extraSpawner3.position, extraSpawner3.rotation);
+            Destroy(collider);
         }
     }
 
