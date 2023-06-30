@@ -11,6 +11,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private LayerMask lightBox;
     [SerializeField] private LayerMask lightPanel;
     [SerializeField] private LayerMask battery;
+    [SerializeField] private LayerMask hpBox;
     [SerializeField] private int minRequiredToInteract;
 
     private Camera cam;
@@ -45,11 +46,15 @@ public class PlayerInteract : MonoBehaviour
 
     public WeaponUI weaponui;
 
+    [SerializeField] private PlayerStats playerStats;
+   
+
     private void Start()
     {
         GetReferences();
         minRequiredToInteract = 6;
         puzzle1Solved = false;
+        
         
 
     }
@@ -82,7 +87,7 @@ public class PlayerInteract : MonoBehaviour
             float magnitude = (hit.point - cam.transform.position).magnitude;
             if (!Physics.Raycast(cam.transform.position, cam.transform.forward, magnitude * 0.9f, obstacleLayer))
             {
-                
+
                 Weapon newItem = hit.transform.GetComponent<ItemObject>().item as Weapon;
 
                 if (inventory.hasItemInList(newItem))
@@ -120,7 +125,7 @@ public class PlayerInteract : MonoBehaviour
 
             puzzle1Solved = true;
             Fusibles.SetActive(true);
-            Animator animator = Fusibles.GetComponent<Animator>();           
+            Animator animator = Fusibles.GetComponent<Animator>();
             animator.SetBool("Open", true);
             Destroy(unlockDoor);
             spiders.SetActive(true);
@@ -142,35 +147,43 @@ public class PlayerInteract : MonoBehaviour
             {
                 door actualdoor = hit.collider.GetComponentInParent<door>();
 
-                if(actualdoor != null && equipManager.currentWeapon.id == actualdoor.id && !actualdoor.isOpen)
+                if (actualdoor != null && equipManager.currentWeapon.id == actualdoor.id && !actualdoor.isOpen)
                 {
                     actualdoor.animator.SetBool("Open", true);
                     audioSource.Play();
                     equipManager.DestroyWeapon();
                     actualdoor.isOpen = true;
                 }
-               
+
             }
 
         }
-        else if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, battery))
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, battery))
         {
-            if(flashLightSO.magazineSize < 100)
+            if (flashLightSO.magazineSize < 100)
             {
                 flashLightSO.magazineSize += 10;
-                
+
                 Destroy(hit.collider.gameObject);
 
-                
-                if(flashLightSO.magazineSize > 100)
+
+                if (flashLightSO.magazineSize > 100)
                 {
                     flashLightSO.magazineSize = 100;
-                    
+
                 }
 
                 weaponui.updateMagazineInfo(flashLightSO.magazineSize);
             }
+
+        }
+
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, hpBox))
+        {
+            Destroy(hit.collider.gameObject);
+            playerStats.Heal(10);
             
+
         }
     }
 

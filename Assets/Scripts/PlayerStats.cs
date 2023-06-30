@@ -20,6 +20,8 @@ public class PlayerStats : CharacterStats
     [SerializeField] private GameObject mothCounter;
     [SerializeField] private mothTimer _mothTimer;
 
+    
+    
     public bool enemySpawned;
 
     public List<Vector3> ghostPositions = new List<Vector3>();
@@ -28,12 +30,14 @@ public class PlayerStats : CharacterStats
     private int counter = 0;
 
     public AudioSource jumpScare;
+    
 
     private void Start()
     {
         GetReferences();
         InitVariables();
 
+        
         //Enemy Spawns
         ghostPositions.Add(ghostSpawn.position = new Vector3(24, 11.5f, 33));
         ghostPositions.Add(ghostSpawn.position = new Vector3(14, 11.5f, 40));
@@ -57,6 +61,8 @@ public class PlayerStats : CharacterStats
     {
         mothLose();
         LoseCondition();
+        
+        
     }
 
     private void GetReferences()
@@ -102,6 +108,8 @@ public class PlayerStats : CharacterStats
             Destroy(mothTrigger);
         }
     }
+
+
 
     private bool isPoisoned = false;
     private float poisonInterval = 0.5f;

@@ -10,6 +10,7 @@ TagManager:
   - Weapon
   - Spit
   - Moth
+  - HpBox
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Attack
   - Battery
   - ChildPuzzle
-  - 
+  - HpBox
   - 
   - whatIsPlayer
   - whatIsGround
