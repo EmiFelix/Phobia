@@ -42,16 +42,21 @@ public class Linterna : MonoBehaviour
         if (luzLinterna.enabled)
         {
             RaycastHit hit;
-
+            Debug.Log("entramos en linterna hit");
+            
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
             {
-
+                Debug.Log("entramos en hit");
+                Debug.Log(hit.collider.name);
                 if (hit.collider.tag == "Enemy" || hit.collider.tag == "GhostHitBox")
                 {
+                    
+                    Debug.Log("entramos en enemy collider o ghost hitbox");
                     var spider = hit.collider.GetComponent<IEnemy>();
                     if (spider != null)
                     {
+                        Debug.Log("le bajo hp");
                         spider.LoseHP(10);
                     }
 
