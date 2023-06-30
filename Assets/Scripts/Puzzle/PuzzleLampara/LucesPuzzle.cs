@@ -63,7 +63,7 @@ public class LucesPuzzle : MonoBehaviour
         }
     }
 
-    private void TurnOfLight()
+    private void TurnOffLight()
     {
         isLightOn = false;
         luz.SetActive(false);
