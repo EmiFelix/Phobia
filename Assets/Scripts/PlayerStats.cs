@@ -128,10 +128,10 @@ public class PlayerStats : CharacterStats
     {
         while (isPoisoned)
         {
-            // Wait for the specified interval before taking damage
+            
             yield return new WaitForSeconds(poisonInterval);
-            // Take 1 damage
-            takeDMG(1);
+            
+            takeDMG(3);
            
         }        
     }
