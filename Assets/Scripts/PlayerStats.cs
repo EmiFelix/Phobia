@@ -41,6 +41,7 @@ public class PlayerStats : CharacterStats
     private int counter = 0;
 
     public AudioSource jumpScare;
+    public AudioSource muñeca;
     
 
     private void Start()
@@ -135,6 +136,7 @@ public class PlayerStats : CharacterStats
 
         if (collider.transform.tag == "Extra Trigger 3")
         {
+            muñeca.Play();
 
             Instantiate(extraGhost3, extraSpawner3.position, extraSpawner3.rotation);
             Destroy(collider);

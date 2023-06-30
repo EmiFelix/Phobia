@@ -20,7 +20,9 @@ public class Linterna : MonoBehaviour
 
     private float timer;
 
-    private SpendBattery spendBattery = new SpendBattery(); 
+    private SpendBattery spendBattery = new SpendBattery();
+
+    public AudioSource linterna;
 
     private void Start()
     {
@@ -86,10 +88,12 @@ public class Linterna : MonoBehaviour
         activeLight = !activeLight;
         if (activeLight == true)
         {
+            linterna.Play();
             luzLinterna.enabled = true;
         }
         else if (activeLight == false)
         {
+            linterna.Play();
             luzLinterna.enabled = false;
         }
     }
