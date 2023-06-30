@@ -16,5 +16,5 @@ public class Weapon : Item
     public int magazineSizeINITIAL;
 }
 
-public enum WeaponType { Key, Usable, Hands, Fuse}
-public enum WeaponStyle { Melee, Primary, Secondary}
+public enum WeaponType { Key, Usable, Hands, Fuse, Forms}
+public enum WeaponStyle { Melee, Primary, Secondary, Tertiary}
