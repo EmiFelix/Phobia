@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Key
   description: A key that opens doors. Weird huh?
   icon: {fileID: 21300000, guid: d3aa3c8457d3a83419c8b6d8dcc7df24, type: 3}
-  prefab: {fileID: 5477460692549775048, guid: 05725e64e57252e40a0a659a1d2d30a7, type: 3}
+  prefab: {fileID: 5477460692549775048, guid: 69597b241a717e64e9f58119da90eb68, type: 3}
   magazineSize: 1
   magazineCount: 1
   range: 4
