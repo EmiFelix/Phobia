@@ -12,12 +12,16 @@ public class CircuitControl : MonoBehaviour
     public AudioSource audioSource;
 
     private bool codeCompleted = false;
+    [SerializeField] private GameObject moth;
+    [SerializeField] private GameObject mothCounter;
 
     private void CorrectCodeEntered()
     {
         if (SameLists(codeEntered, correctCode))
         {
             OpenDoor();
+            Destroy(moth);
+            Destroy(mothCounter);
         }
         else
         {

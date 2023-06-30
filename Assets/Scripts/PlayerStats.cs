@@ -14,6 +14,11 @@ public class PlayerStats : CharacterStats
     [SerializeField] private Transform triggerSpawn;
     [SerializeField] private LayerMask triggerSound;
 
+    //moth
+    [SerializeField] private GameObject mothTrigger;
+    [SerializeField] private GameObject mothCounter;
+    [SerializeField] private mothTimer _mothTimer;
+
     public bool enemySpawned;
 
     public List<Vector3> ghostPositions = new List<Vector3>();
@@ -47,6 +52,11 @@ public class PlayerStats : CharacterStats
 
     }
 
+    private void Update()
+    {
+        mothLose();
+    }
+
     private void GetReferences()
     {
         hud = GetComponent<PlayerHUD>();
@@ -56,6 +66,7 @@ public class PlayerStats : CharacterStats
     {
         base.CheckHP();
         hud.UpdateHP(HP, maxHP);
+
     }
 
     //TODO: PLEASE MIGRAR TODAS ESTAS COSAS A UN GAME MANAGER >.<"
@@ -80,6 +91,13 @@ public class PlayerStats : CharacterStats
         if(collider.transform.tag == "Spit")
         {
             takeDMG(5);
+        }
+
+        if(collider.transform.tag == "Moth")
+        {
+            
+            mothCounter.SetActive(true);
+            Destroy(mothTrigger);
         }
     }
 
@@ -112,6 +130,15 @@ public class PlayerStats : CharacterStats
     public void StopPoison()
     {
         isPoisoned = false;
+    }
+
+    public void mothLose()
+    {
+        
+        if(_mothTimer.lose == true)
+        {
+            takeDMG(100);
+        }
     }
 }
 

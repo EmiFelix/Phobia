@@ -9,6 +9,7 @@ TagManager:
   - GhostHitBox
   - Weapon
   - Spit
+  - Moth
   layers:
   - Default
   - TransparentFX
