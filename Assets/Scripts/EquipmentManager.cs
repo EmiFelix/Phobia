@@ -18,7 +18,6 @@ public class EquipmentManager : MonoBehaviour
     private void Start()
     {
         GetReferences3();
-        InitVariables();
 
     }
 
@@ -51,7 +50,7 @@ public class EquipmentManager : MonoBehaviour
     {
         currentEquip = (int)weapon.weaponStyle;
         //TODO: Anim
-        currentWeaponObject = Instantiate(weapon.prefab, weaponHolder);
+        currentWeaponObject = Instantiate(weapon.prefab, weaponHolder);                                     
         currentWeapon = weapon;
         hud.UpdateWeaponUI(weapon);
     }
@@ -71,11 +70,7 @@ public class EquipmentManager : MonoBehaviour
         Destroy(currentWeaponObject);
     }
 
-    private void InitVariables()
-    {
-        //inventory.AddItem(defaultMeleeWeapon);
-        //EquipWeapon(inventory.GetItem(2));
-    }
+
 
     private void GetReferences3()
     {

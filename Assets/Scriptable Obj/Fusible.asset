@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Fusible
   description: Fusible
   icon: {fileID: 21300000, guid: b15210b4ffdaccc4f8b0de110308d0cd, type: 3}
-  prefab: {fileID: 2485648366888065279, guid: 9ccd2708e0f2178429775618c068ac34, type: 3}
+  prefab: {fileID: 1428705253931813624, guid: 7e238889931abce4fa73cfe50ee01287, type: 3}
   magazineSize: 1
   magazineCount: 6
   range: 4
