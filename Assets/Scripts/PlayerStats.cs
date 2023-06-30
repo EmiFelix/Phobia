@@ -20,8 +20,16 @@ public class PlayerStats : CharacterStats
     [SerializeField] private GameObject mothCounter;
     [SerializeField] private mothTimer _mothTimer;
 
-    
-    
+    //
+    [SerializeField] private GameObject extraGhost1;
+    [SerializeField] private Transform extraSpawner;
+
+    [SerializeField] private GameObject extraGhost2;
+    [SerializeField] private Transform extraSpawner2;
+
+
+
+
     public bool enemySpawned;
 
     public List<Vector3> ghostPositions = new List<Vector3>();
@@ -106,6 +114,20 @@ public class PlayerStats : CharacterStats
             
             mothCounter.SetActive(true);
             Destroy(mothTrigger);
+        }
+
+        if (collider.transform.tag == "Extra Trigger")
+        {
+
+            Instantiate(extraGhost1, extraSpawner.position, extraSpawner.rotation);
+            Destroy(collider);
+        }
+
+        if (collider.transform.tag == "Extra Trigger 2")
+        {
+
+            Instantiate(extraGhost2, extraSpawner2.position, extraSpawner2.rotation);
+            Destroy(collider);
         }
     }
 
