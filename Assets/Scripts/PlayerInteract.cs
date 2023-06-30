@@ -12,7 +12,9 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private LayerMask lightPanel;
     [SerializeField] private LayerMask battery;
     [SerializeField] private LayerMask hpBox;
+    [SerializeField] private LayerMask toyBox;
     [SerializeField] private int minRequiredToInteract;
+    [SerializeField] private int minRequiredToInteract2;
 
     private Camera cam;
 
@@ -28,10 +30,12 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject luz3;
     [SerializeField] private GameObject lever;
     private bool puzzle1Solved;
+    private bool puzzle2Solved;
 
 
     [SerializeField] private GameObject fusiblesParent;
     [SerializeField] private GameObject unlockDoor;
+    [SerializeField] private GameObject unlockDoor2;
     [SerializeField] private GameObject spiders;
     [SerializeField] private Weapon flashLightSO;
 
@@ -53,6 +57,7 @@ public class PlayerInteract : MonoBehaviour
     {
         GetReferences();
         minRequiredToInteract = 6;
+        minRequiredToInteract2 = 9;
         puzzle1Solved = false;
         
         
@@ -184,6 +189,18 @@ public class PlayerInteract : MonoBehaviour
             playerStats.Heal(10);
             
 
+        }
+
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, pickupRange, toyBox) && equipManager.currentWeapon.weaponType == WeaponType.Forms && equipManager.currentWeapon.magazineSize == minRequiredToInteract2)
+        {
+
+            equipManager.DestroyWeapon();
+            puzzle2Solved = true;
+
+            //Fusibles.SetActive(true);
+            //Animator animator = Fusibles.GetComponent<Animator>();
+            //animator.SetBool("Open", true);
+            Destroy(unlockDoor2);
         }
     }
 
