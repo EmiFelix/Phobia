@@ -166,6 +166,7 @@ public class EnemyScript : MonoBehaviour, IEnemy
 
         if (_hp <= 0)
         {
+            // instanciar moneda en su posicion.
             Destroy(gameObject);
         }
     }
